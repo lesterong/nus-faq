@@ -8,11 +8,11 @@ const Modal = ({setShowModal}) => {
           r/NUS and r/SGExams, so I made this site to collate the questions.
         </p>
         <p className="mt-1">
-          If you have any general feedback (good or bad), feel free to drop me a message <a href="https://forms.gle/ivY3YVdxd3x2Zdqq6" rel="noopener nofollow"> here</a>.
+          If you have any general feedback (good or bad), feel free to drop me a message <a href="https://forms.gle/ivY3YVdxd3x2Zdqq6" rel="noopener nofollow noreferrer" target="_blank"> here</a>.
         </p>
         <p className="mt-1">
           If you would like to contribute to the questions, I'm working on it. For the time being,
-          drop me a message at <a href="https://forms.gle/ivY3YVdxd3x2Zdqq6" rel="noopener nofollow"> the same link</a>. 
+          drop me a message at <a href="https://forms.gle/ivY3YVdxd3x2Zdqq6" rel="noopener nofollow noreferrer" target="_blank"> the same link</a>. 
         </p>
         <p className="mt-6"> <small> Last updated: 4 May 2022 </small> </p>
       </div>
