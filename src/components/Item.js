@@ -1,16 +1,17 @@
 import { useState } from "react";
 import Arrow from "../assets/Arrow";
 import parse from 'html-react-parser';
+import Highlight from "./Highlighter";
 
-const Item = ({faq}) => {
+const Item = ({q, currQuery}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const question = faq.question;
-  const answer = parse(faq.answer);
+  const question = q.question;
+  const answer = parse(q.answer);
 
   return (
     <div className="item">
-      <header className="flex items-center place-content-between cursor-pointer" onClick={() => setIsOpen(!isOpen)}> 
-        <h2> {question} </h2>
+      <header onClick={() => setIsOpen(!isOpen)}> 
+        <h2> <Highlight query={currQuery} text={question} /> </h2>
         <Arrow isOpen={isOpen} />
       </header>
       {isOpen && <p> {answer} </p>}

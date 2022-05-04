@@ -5,14 +5,27 @@ import { useState } from "react";
 
 function App() {
   const [currCat, setCurrCat] = useState(localStorage.getItem('category') || 'prospective')
-  const setCat = (category) => setCurrCat(category);
+  const [currQuery, setCurrQuery] = useState('');
+  const [isQuerying, setIsQuerying] = useState(false);
+
+  const setCat = (category) => {
+    setCurrCat(category);
+    localStorage.setItem('category', category);
+  };
+
+  const query = {
+    currQuery: currQuery,
+    setCurrQuery: q => setCurrQuery(q),
+    isQuerying: isQuerying,
+    setIsQuerying: value => setIsQuerying(value),
+  }
 
   return (
     <div className="App">
-      <Navbar />
+      <Navbar query={query} />
       <div className="content">
         <Sidebar currCat={currCat} setCat={setCat} />
-        <Accordion currCat={currCat} />
+        <Accordion currCat={currCat} currQuery={currQuery} />
       </div>
     </div>
   );

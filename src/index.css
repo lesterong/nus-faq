@@ -18,7 +18,7 @@
   }
 
   nav {
-    @apply bg-purple flex md:pl-6 py-2 space-x-2 pl-3;
+    @apply bg-purple flex md:px-6 py-2 px-3 place-content-between items-center;
   }
 
   p {
@@ -27,6 +27,10 @@
 
   a {
     @apply text-purple hover:underline;
+  }
+
+  svg {
+    @apply shrink-0;
   }
 
   .content {
@@ -44,5 +48,21 @@
 
   .item {
     @apply px-3 py-3 mb-3 bg-white rounded-lg md:w-[32rem] w-[96vw] shadow-sm;
+  }
+
+  .item header {
+    @apply flex items-center place-content-between cursor-pointer;
+  }
+
+  .searchbar {
+    @apply flex items-center text-white w-8/12 max-w-md justify-between space-x-2;
+  }
+
+  .searchbar input {
+    @apply placeholder:text-white/70 focus:border-b outline-none;
+  }
+
+  mark {
+    @apply bg-purple/30;
   }
 }

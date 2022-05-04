@@ -2,7 +2,7 @@ import Item from "./Item";
 import faqService from "../services/faq";
 import { useEffect, useState } from "react";
 
-const Accordion = ({currCat}) => {
+const Accordion = ({currCat, currQuery}) => {
   const [faqs, setFaqs] = useState([]);
 
   const getFaq = () => {
@@ -12,12 +12,14 @@ const Accordion = ({currCat}) => {
   };
   useEffect(getFaq, []);
 
-  const faqsToShow = faqs.filter(x => x.category === currCat)
+  const faqsToSearch = faqs.filter(x => x.question.toLowerCase().includes(currQuery.toLowerCase()))
+  const faqsToShow = faqsToSearch.filter(x => x.category === currCat)
 
   return (
     <div className="mx-auto mt-3">
-      {faqsToShow.map(faq => (
-        <Item faq={faq} key={faq.id}/>
+      {faqsToShow.length === 0 && <p> No results found. </p>}
+      {faqsToShow.map(q => (
+        <Item q={q} currQuery={currQuery} key={q.id} />
       ))}
     </div>
   );
