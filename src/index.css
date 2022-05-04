@@ -35,7 +35,7 @@
   }
 
   aside > p {
-    @apply shrink-0;
+    @apply shrink-0 cursor-pointer;
   }
 
   .item {
