@@ -38,7 +38,7 @@
   }
 
   aside {
-    @apply bg-white md:px-6 md:py-3 flex md:flex-col md:space-y-3 md:space-x-0
+    @apply bg-white md:px-6 md:py-3 flex md:flex-col md:space-y-3 md:space-x-0 shadow
     flex-row overflow-x-scroll space-x-4 px-2 py-1 lg:fixed z-10 sticky top-[52px];
   }
 
