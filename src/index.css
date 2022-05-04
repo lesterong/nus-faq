@@ -18,7 +18,7 @@
   }
 
   nav {
-    @apply bg-purple flex md:px-6 py-2 px-3 place-content-between items-center;
+    @apply bg-purple flex md:px-6 py-2 px-3 place-content-between items-center h-[52px];
   }
 
   p {
@@ -55,7 +55,7 @@
   }
 
   .searchbar {
-    @apply flex items-center text-white w-8/12 max-w-md justify-between space-x-2;
+    @apply flex items-center text-white md:w-8/12 md:max-w-md justify-between space-x-2 w-screen;
   }
 
   .searchbar input {

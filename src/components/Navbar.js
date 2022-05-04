@@ -3,9 +3,14 @@ import Search from "../assets/Search";
 import Close from "../assets/Close";
 
 const Navbar = ({query}) => {
+  console.log(query.isQuerying)
+  const hideLogo = query.isQuerying
+    ? 'hidden md:flex space-x-2'
+    : 'flex space-x-2'
+
   return (
     <nav>
-      <div className="flex space-x-2">
+      <div className={hideLogo}>
         <Logo />
         <h1><b> NUS </b> CS FAQ</h1>
       </div>
