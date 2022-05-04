@@ -1,9 +1,22 @@
 import Item from "./Item";
+import faqService from "../services/faq";
+import { useEffect, useState } from "react";
 
 const Accordion = () => {
+  const [faqs, setFaqs] = useState([]);
+
+  const getFaq = () => {
+    faqService.getAll().then((initial) => {
+      setFaqs(initial);
+    });
+  };
+  useEffect(getFaq, []);
+
   return (
     <div className="mx-auto mt-3"> 
-      <Item />
+      {faqs.map(faq => (
+        <Item faq={faq} />
+      ))}
     </div>
   );
 }
