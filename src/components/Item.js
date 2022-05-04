@@ -7,6 +7,18 @@ const Item = ({q, currQuery}) => {
   const [isOpen, setIsOpen] = useState(false);
   const question = q.question;
   const answer = parse(q.answer);
+  const source = q.source || [];
+  const mappedSource = source.map(s => (
+    `<small key=${s}> <a href=${s} rel='noreferrer noopener nofollow' target='_blank'>source</a></small>`
+  ))
+  let strSource = ''
+  for (let i = 0; i < mappedSource.length; ++i) {
+    strSource += mappedSource[i] 
+    if (i !== mappedSource.length - 1) {
+      strSource += '<small>,</small>'
+    }
+  }
+  const resultSource = parse(strSource);
 
   return (
     <div className="item">
@@ -14,7 +26,11 @@ const Item = ({q, currQuery}) => {
         <h2> <Highlight query={currQuery} text={question} /> </h2>
         <Arrow isOpen={isOpen} />
       </header>
-      {isOpen && <> {answer} </>}
+      {isOpen && 
+      <> 
+      {answer}
+      <p> {resultSource} </p>
+      </>}
     </div>
   )
 }
