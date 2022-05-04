@@ -1,22 +1,47 @@
 [
   {
     "question": "How do I prepare for CS?",
-    "answer": "Here are some resources you can use to get started on CS <ul> <li> <a href='https://cs50.harvard.edu/college/2022/spring/'> CS50</a> and its variants </li> <li> <a href='https://cs50.harvard.edu/college/2022/spring/'> The Odin Project</a> for learning about web development </li>  </ul>",
+    "answer": "Here are some resources you can use to get started on CS <ul> <li> <a href='https://cs50.harvard.edu/college/2022/spring/' rel='noopener nofollow' target='blank'> CS50</a> and its variants to learn about programming fundamentals </li> <li> <a href='https://theodinproject.com/' rel='noopener nofollow' target='blank'> The Odin Project</a> to learn about web development </li> </ul>",
     "category": "incoming"
   },
   {
-    "question": "What laptop should I get for CS? Can I get the M1 Macbook?",
-    "answer": "Yes.",
+    "question": "What laptop should I get for CS? Can I use the M1 Macbook?",
+    "answer": "Most laptops, both Windows and Macs should work well for most of CS modules in NUS. There may be some comptability issues with x86 Virtual Machines with Apple Silicon Macs (e.g. M1), for some modules, NUS provides its servers for students to use.",
     "category": "incoming current"
   },
   {
-    "question": "b",
-    "answer": "b",
+    "question": "What CS modules should I take in year 1?",
+    "answer": "Here are some of the modules that most Y1 students take: <ul> <li> Sem 1: <a href='https://nusmods.com/modules/CS1101S/programming-methodology' rel='noopener nofollow' target='blank'> CS1101S</a> <a href='https://nusmods.com/modules/CS1231S/discrete-structures' rel='noopener nofollow' target='blank'> CS1231S</a> <a href='https://nusmods.com/modules/MA1521/calculus-for-computing' rel='noopener nofollow' target='blank'> MA1521</a></li> <li> Sem 2: <a href='https://nusmods.com/modules/CS2030S/programming-methodology-ii' rel='noopener nofollow' target='blank'> CS2030S</a> <a href='https://nusmods.com/modules/CS2040S/data-structures-and-algorithms' rel='noopener nofollow' target='blank'> CS2040S</a> <a href='https://nusmods.com/modules/MA2001/linear-algebra-i' rel='noopener nofollow' target='blank'> MA2001</a></li> </ul> Do refer to the curriculum as you plan, as some of the module requirements may differ.",
     "category": "incoming"
   },
   {
-    "question": "a",
-    "answer": "a",
+    "question": "How do I know what modules I need to take?",
+    "answer": "Refer to <a rel='noopener nofollow' target='_blank' href='https://www.comp.nus.edu.sg/cugresource/per-cohort/cs/cs-21-22/'> this page</a>, and select your cohort for the most updated curriculum for your batch.",
+    "category": "incoming"
+  },
+  {
+    "question": "How do I see what modules are available in NUS?",
+    "answer": "You can use <a rel='noopener nofollow' href='https://nusmods.com' target='_blank'> NUSMods </a> to look at all the modules NUS offers.",
+    "category": "incoming"
+  },
+  {
+    "question": "How do I get a CAP of >4.5 (aka FCH)?",
+    "answer": "You can either work hard, or just be smart. However, it's not the end of the world if you aren't a FCH student. Spend your time working on your technical skills and make yourself employable. Examples include <a href='https://leetcode.com' rel='noopener nofollow' target='_blank'> Leetcode</a>, <a href='https://hackerrank.com' rel='noopener nofollow' target='_blank'> HackerRank</a>, <a href='https://kaggle.com' rel='noopener nofollow' target='_blank'> Kaggle</a>, <a href='https://open.kattis.com' rel='noopener nofollow' target='_blank'> Kattis</a>, just to name a few. Or pick up a new programming language.",
+    "category": "incoming current"
+  },
+  {
+    "question": "What to do during the (upcoming) summer break?",
+    "answer": "Here are some things you can consider for summer <ul> <li> <a href='https://orbital.comp.nus.edu.sg/' rel='noopener nofollow' target='blank'> <s> Orbital</s></a> (2022 applications are closed) </li>  <li> <a href='https://www.comp.nus.edu.sg/~vwo/' rel='noopener nofollow' target='blank'><s> CVWO</s></a> (2022 applications are closed) </li> <li> <a href='https://cs50.harvard.edu/college/2022/spring/' rel='noopener nofollow' target='blank'> CS50</a> and its variants </li> <li> <a href='https://theodinproject.com' rel='noopener nofollow' target='_blank'> The Odin Project</a> for learning about web development </li> <li> <a href='https://leetcode.com' rel='noopener nofollow' target='_blank'> Leetcode</a>, <a href='https://hackerrank.com' rel='noopener nofollow' target='_blank'> HackerRank</a>, <a href='https://kaggle.com' rel='noopener nofollow' target='_blank'> Kaggle</a>, <a href='https://open.kattis.com' rel='noopener nofollow' target='_blank'> Kattis</a>, to work on your technical skills </li> <small> or build a website for fun. </small> </ul>",
     "category": "current"
-  } 
+  },
+  {
+    "question": "Can I enter CS if I didn't take A Math in O Levels?",
+    "answer": "It is still possible, though the chances are very slim. Nevertheless, go ahead and try!",
+    "category": "prospective"
+  },
+  {
+    "question": "Is the CS industry oversaturated?",
+    "answer": "My take is that the entry level segment of CS is very oversatured. That said, good senior programmers are still in high demand across the world. Spend your time working on your technical skills and make yourself employable. Examples include <a href='https://leetcode.com' rel='noopener nofollow' target='_blank'> Leetcode</a>, <a href='https://hackerrank.com' rel='noopener nofollow' target='_blank'> HackerRank</a>, <a href='https://kaggle.com' rel='noopener nofollow' target='_blank'> Kaggle</a>, <a href='https://open.kattis.com' rel='noopener nofollow' target='_blank'> Kattis</a>, just to name a few. Or pick up a new programming language.",
+    "category": "prospective current incoming"
+  }
 ]

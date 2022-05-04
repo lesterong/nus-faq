@@ -4,7 +4,11 @@ import Accordion from "./components/Accordion";
 import { useState } from "react";
 
 function App() {
-  const [currCat, setCurrCat] = useState(localStorage.getItem('category') || 'prospective')
+  if (!localStorage.getItem('category')) {
+    localStorage.setItem('category', 'prospective');
+  }
+
+  const [currCat, setCurrCat] = useState(localStorage.getItem('category'))
   const [currQuery, setCurrQuery] = useState('');
   const [isQuerying, setIsQuerying] = useState(false);
 

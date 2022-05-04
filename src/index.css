@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
 @layer base {
@@ -14,11 +14,11 @@
   }
 
   h2 {
-    @apply text-lg font-bold font-sans;
+    @apply text-lg font-medium font-sans;
   }
 
   nav {
-    @apply bg-purple flex md:px-6 py-2 px-3 place-content-between items-center h-[52px];
+    @apply bg-purple flex md:px-6 py-2 px-3 place-content-between items-center h-[52px] sticky top-0 z-10;
   }
 
   p {
@@ -38,8 +38,14 @@
   }
 
   aside {
-    @apply bg-white md:px-6 md:py-3 md:h-screen flex md:flex-col md:space-y-3 md:space-x-0
-    flex-row overflow-x-scroll space-x-4 px-2 py-1;
+    @apply bg-white md:px-6 md:py-3 flex md:flex-col md:space-y-3 md:space-x-0
+    flex-row overflow-x-scroll space-x-4 px-2 py-1 lg:fixed z-10 sticky top-[52px];
+  }
+
+  @media (min-width: 768px) {
+    aside {
+      height: calc(100vh - 52px);
+    }
   }
 
   aside > p {
@@ -68,5 +74,13 @@
 
   ul {
     @apply list-disc pl-4
+  }
+
+  .modal-bg {
+    @apply absolute bg-black/40 w-screen h-screen flex z-20;
+  }
+
+  .modal-content {
+    @apply bg-white md:w-[30rem] w-screen h-max p-4 my-auto md:mx-auto rounded-md shadow-sm mx-4;
   }
 }
