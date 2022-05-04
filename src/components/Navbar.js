@@ -3,7 +3,6 @@ import Search from "../assets/Search";
 import Close from "../assets/Close";
 
 const Navbar = ({query}) => {
-  console.log(query.isQuerying)
   const hideLogo = query.isQuerying
     ? 'hidden md:flex space-x-2'
     : 'flex space-x-2'

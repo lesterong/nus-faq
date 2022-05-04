@@ -65,4 +65,8 @@
   mark {
     @apply bg-purple/30;
   }
+
+  ul {
+    @apply list-disc pl-4
+  }
 }

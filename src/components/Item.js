@@ -14,7 +14,7 @@ const Item = ({q, currQuery}) => {
         <h2> <Highlight query={currQuery} text={question} /> </h2>
         <Arrow isOpen={isOpen} />
       </header>
-      {isOpen && <p> {answer} </p>}
+      {isOpen && <> {answer} </>}
     </div>
   )
 }

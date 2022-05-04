@@ -1,14 +1,22 @@
 [
   {
-    "question": "Question",
-    "answer": "Answer",
-    "category": "prospective",
-    "id": 1
+    "question": "How do I prepare for CS?",
+    "answer": "Here are some resources you can use to get started on CS <ul> <li> <a href='https://cs50.harvard.edu/college/2022/spring/'> CS50</a> and its variants </li> <li> <a href='https://cs50.harvard.edu/college/2022/spring/'> The Odin Project</a> for learning about web development </li>  </ul>",
+    "category": "incoming"
   },
   {
-    "question": "Question",
-    "answer": "<a href='https://www.google.com'> Hello World! </a>",
-    "category": "prospective",
-    "id": 2
-  }
+    "question": "What laptop should I get for CS? Can I get the M1 Macbook?",
+    "answer": "Yes.",
+    "category": "incoming current"
+  },
+  {
+    "question": "b",
+    "answer": "b",
+    "category": "incoming"
+  },
+  {
+    "question": "a",
+    "answer": "a",
+    "category": "current"
+  } 
 ]
