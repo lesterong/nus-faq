@@ -15,7 +15,7 @@ const Accordion = () => {
   return (
     <div className="mx-auto mt-3">
       {faqs.map(faq => (
-        <Item faq={faq} />
+        <Item faq={faq} key={faq.id}/>
       ))}
     </div>
   );

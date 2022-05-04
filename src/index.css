@@ -34,6 +34,10 @@
     flex-row overflow-x-scroll space-x-4 px-2 py-1;
   }
 
+  aside > p {
+    @apply shrink-0;
+  }
+
   .item {
     @apply px-3 py-3 mb-3 bg-white rounded-lg md:w-[32rem] w-[96vw] shadow-sm cursor-pointer;
   }
