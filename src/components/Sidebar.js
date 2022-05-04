@@ -1,8 +1,8 @@
 const Sidebar = () => (
   <aside>
-    <p> Prospective Students </p>
-    <p> Incoming Students </p>
-    <p> Current Students </p>
+    <p className="shrink-0"> Prospective Students </p>
+    <p className="shrink-0"> Incoming Students </p>
+    <p className="shrink-0"> Current Students </p>
   </aside>
 );
 

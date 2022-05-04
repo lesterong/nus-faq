@@ -13,7 +13,7 @@ const Accordion = () => {
   useEffect(getFaq, []);
 
   return (
-    <div className="mx-auto mt-3"> 
+    <div className="mx-auto mt-3">
       {faqs.map(faq => (
         <Item faq={faq} />
       ))}
