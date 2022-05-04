@@ -1,13 +1,39 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer base {
+  body {
+    @apply bg-gray text-black;
+  }
+
+  h1 {
+    @apply text-3xl text-white font-display;
+  }
+
+  h2 {
+    @apply text-lg font-bold font-sans;
+  }
+
+  nav {
+    @apply bg-purple flex pl-6 py-2 space-x-2;
+  }
+
+  p {
+    @apply font-sans text-base;
+  }
+
+  .content {
+    @apply flex md:flex-row flex-col;
+  }
+
+  aside {
+    @apply bg-white md:px-6 md:py-3 md:h-screen flex md:flex-col md:space-y-3;
+  }
+
+  .item {
+    @apply px-3 py-3 bg-white rounded-lg w-[32rem] shadow-sm cursor-pointer;
+  }
 }
