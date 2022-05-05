@@ -4,13 +4,15 @@ import Close from "../assets/Close";
 import Info from "../assets/Info";
 import Modal from "./Modal";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 
 const Navbar = ({query}) => {
   const hideLogo = query.isQuerying
     ? 'hidden md:flex space-x-2'
     : 'flex space-x-2'
   
-  const currCat = localStorage.getItem('category').charAt(0).toUpperCase() + localStorage.getItem('category').slice(1);
+  let params = useParams();
+  const currCat = params.currCat.charAt(0).toUpperCase() + params.currCat.slice(1);
 
   const [showModal, setShowModal] = useState(false);
 
