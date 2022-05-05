@@ -28,7 +28,7 @@ const Navbar = ({handleQuery}) => {
     <>
     {showModal && <Modal setShowModal={() => setShowModal(false)} />}
     <nav>
-      <button className={hideLogo} onClick={() => navigate('/prospective')}>
+      <button aria-label="Logo" className={hideLogo} onClick={() => navigate('/prospective')}>
         <Logo />
         <h1><b> NUS </b> CS FAQ</h1>
       </button>

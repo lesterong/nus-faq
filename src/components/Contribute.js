@@ -8,6 +8,7 @@ const Contribute = () => {
   const [answer, setAnswer] = useState('');
   const [category, setCategory] = useState([]);
   const [source, setSource] = useState([]);
+  const [showSuccess, setShowSuccess] = useState(false);
   const time = DateTime.now().toString();
 
   const handleSubmit = (e) => {
@@ -26,13 +27,20 @@ const Contribute = () => {
         setAnswer('')
         setCategory([])
         setSource([])
+        setShowSuccess(true)
       })
   }
 
   return (
     <div className="contribute-container">
       <form className="contribute-form" onSubmit={handleSubmit}>
-        <h2> Contribute your questions (and answers)! </h2>
+      {showSuccess && 
+        <>
+        <h2 className="mx-auto"> Your submission has been received! Thanks for contributing. </h2>
+        <button aria-label="Contribute more" onClick={() => setShowSuccess(false)}> Contribute more </button>
+        </>
+      }
+        {!showSuccess && <><h2> Contribute your questions (and answers)! </h2>
         <div role="group">
           <label htmlFor="question">Question*</label>
           <input 
@@ -109,7 +117,7 @@ const Contribute = () => {
           />
         </div>
 
-        <button type='submit'> Submit </button>
+        <button type='submit'> Submit </button> </>}
       </form>
     </div>
   )
