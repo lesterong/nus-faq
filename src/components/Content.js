@@ -3,21 +3,21 @@ import Accordion from "./Accordion";
 import Navbar from "./Navbar";
 import { useSearchParams } from "react-router-dom";
 
-const Content = ({query}) => {
+const Content = () => {
   let [searchParams, setSearchParams] = useSearchParams();
   const currQuery = searchParams.get('q');
   const setQuery = (query) => setSearchParams({q: `${query}`})
 
-  const query2 = {
+  const handleQuery = {
     currQuery: currQuery,
     setQuery: setQuery,
   }
 
   return (
     <>
-    <Navbar query={query2} />
+    <Navbar handleQuery={handleQuery} />
     <div className="content">
-      <Sidebar />
+      <Sidebar currQuery={currQuery} />
       <Accordion currQuery={currQuery} />
     </div>
     </>
