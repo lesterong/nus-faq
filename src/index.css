@@ -69,7 +69,7 @@
   }
 
   .searchbar input {
-    @apply placeholder:text-white/70 focus:border-b outline-none;
+    @apply placeholder:text-white/70 focus:border-b outline-none flex-grow bg-transparent w-52;
   }
 
   mark {

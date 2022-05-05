@@ -17,9 +17,11 @@ const Accordion = ({currQuery}) => {
     });
   };
   useEffect(getFaq, []);
-
-  const faqsToSearch = faqs.filter(x => x.question.toLowerCase().includes(currQuery.toLowerCase()))
-  const faqsToShow = faqsToSearch.filter(x => x.category.includes(currCat))
+  
+  const faqsToShow = !currQuery
+    ? faqs.filter(x => x.category.includes(currCat))
+    : faqs.filter(x => x.question.toLowerCase().includes(currQuery.toLowerCase()))
+          .filter(x => x.category.includes(currCat))
 
   return (
     <div className="mx-auto mt-3">

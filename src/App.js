@@ -3,11 +3,8 @@ import { useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 function App() {
-  const [currQuery, setCurrQuery] = useState('');
   const [isQuerying, setIsQuerying] = useState(false);
   const query = {
-    currQuery: currQuery,
-    setCurrQuery: q => setCurrQuery(q),
     isQuerying: isQuerying,
     setIsQuerying: value => setIsQuerying(value),
   }

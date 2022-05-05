@@ -7,16 +7,21 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 
 const Navbar = ({query}) => {
-  const hideLogo = query.isQuerying
-    ? 'hidden md:flex space-x-2'
-    : 'flex space-x-2'
   
   let params = useParams();
-  const currCat = params.currCat.charAt(0).toUpperCase() + params.currCat.slice(1);
+  let currCat = params.currCat;
+  const isValidCat = currCat === 'prospective' || currCat === 'incoming' || currCat === 'current';
+  const displayCat = currCat.charAt(0).toUpperCase() + currCat.slice(1);
 
   const [showModal, setShowModal] = useState(false);
 
-  const handleClose = query.currQuery === '' ? () => query.setIsQuerying(false) : () => query.setCurrQuery('');
+  const [showSearch, setShowSearch] = useState(!!query.currQuery);
+
+  const handleClose = !query.currQuery ? () => setShowSearch(false) : () => query.setQuery('');
+
+  const hideLogo = !!showSearch
+    ? 'hidden md:flex md:space-x-2'
+    : 'flex space-x-2'
 
   return (
     <>
@@ -27,15 +32,14 @@ const Navbar = ({query}) => {
         <h1><b> NUS </b> CS FAQ</h1>
       </div>
 
-      {query.isQuerying ?
+      {showSearch ?
       <div className="searchbar">
         <Search />
         <input 
-          className="bg-transparent flex-grow"
           type="text"
-          placeholder={`Searching under ${currCat} Students`}
-          value={query.currQuery}
-          onChange={(e) => query.setCurrQuery(e.target.value)}
+          placeholder={isValidCat ? `Searching under ${displayCat} Students`: 'Select a category to search'}
+          value={query.currQuery || ''}
+          onChange={(e) => query.setQuery(e.target.value)}
           autoFocus
         />
         <button aria-label="Close search" onClick={handleClose}>
@@ -47,7 +51,7 @@ const Navbar = ({query}) => {
         <button
           className="focus-white"
           aria-label="Search"
-          onClick={() => query.setIsQuerying(true)}
+          onClick={() => setShowSearch(true)}
         > 
           <Search /> 
         </button>
