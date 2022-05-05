@@ -14,6 +14,8 @@ const Navbar = ({query}) => {
 
   const [showModal, setShowModal] = useState(false);
 
+  const handleClose = query.currQuery === '' ? () => query.setIsQuerying(false) : () => query.setCurrQuery('');
+
   return (
     <>
     {showModal && <Modal setShowModal={() => setShowModal(false)} />}
@@ -34,13 +36,26 @@ const Navbar = ({query}) => {
           onChange={(e) => query.setCurrQuery(e.target.value)}
           autoFocus
         />
-        <Close query={query} />
+        <button aria-label="Close search" onClick={handleClose}>
+          <Close />
+        </button>
       </div> : 
+      
       <div className="flex space-x-2">
-        <div className="cursor-pointer" onClick={() => query.setIsQuerying(true)}> 
+        <button
+          className="focus-white"
+          aria-label="Search"
+          onClick={() => query.setIsQuerying(true)}
+        > 
           <Search /> 
-        </div>
-        <Info setShowModal={() => setShowModal(true)}/>
+        </button>
+        <button
+          className="focus-white"
+          aria-label="About this site"
+          onClick={() => setShowModal(true)}
+        >
+          <Info />
+        </button>
       </div>
       }
     </nav>

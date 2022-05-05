@@ -22,15 +22,15 @@ const Item = ({q, currQuery}) => {
 
   return (
     <div className="item">
-      <header onClick={() => setIsOpen(!isOpen)}> 
+      <button aria-label="item-title" className="item-title" onClick={() => setIsOpen(!isOpen)}> 
         <h2> <Highlight query={currQuery} text={question} /> </h2>
         <Arrow isOpen={isOpen} />
-      </header>
+      </button>
       {isOpen && 
-      <> 
+      <div className="item-body"> 
       {answer}
       <p> {resultSource} </p>
-      </>}
+      </div>}
     </div>
   )
 }
