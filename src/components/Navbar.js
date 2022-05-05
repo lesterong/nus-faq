@@ -4,7 +4,7 @@ import Close from "../assets/Close";
 import Info from "../assets/Info";
 import Modal from "./Modal";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Navbar = ({handleQuery}) => {
   const {currQuery, setQuery} = handleQuery;
@@ -22,16 +22,18 @@ const Navbar = ({handleQuery}) => {
     ? 'hidden md:flex md:space-x-2'
     : 'flex space-x-2'
 
+  let navigate = useNavigate();
+
   return (
     <>
     {showModal && <Modal setShowModal={() => setShowModal(false)} />}
     <nav>
-      <div className={hideLogo}>
+      <button className={hideLogo} onClick={() => navigate('/prospective')}>
         <Logo />
         <h1><b> NUS </b> CS FAQ</h1>
-      </div>
+      </button>
 
-      {showSearch ?
+      {showSearch && isValidCat ?
       <div className="searchbar">
         <Search />
         <input 
@@ -47,13 +49,13 @@ const Navbar = ({handleQuery}) => {
       </div> : 
       
       <div className="flex space-x-2">
-        <button
+        {isValidCat && <button
           className="focus-white"
           aria-label="Search"
           onClick={() => setShowSearch(true)}
         > 
           <Search /> 
-        </button>
+        </button>}
         <button
           className="focus-white"
           aria-label="About this site"

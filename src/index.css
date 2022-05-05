@@ -34,7 +34,7 @@
   }
 
   .content {
-    @apply flex md:flex-row flex-col;
+    @apply flex md:flex-row flex-col h-full;
   }
 
   aside {
@@ -43,7 +43,7 @@
   }
 
   @media (min-width: 768px) {
-    aside {
+    aside, .content {
       height: calc(100vh - 52px);
     }
   }
@@ -94,5 +94,38 @@
 
   .focus-white {
     @apply focus-visible:ring-white rounded-lg;
+  }
+
+  .contribute-container {
+    @apply p-4 flex place-items-center justify-items-center mx-auto;
+  }
+
+  .contribute-form {
+    @apply flex flex-col space-y-3 bg-white py-4 px-6 rounded-lg shadow-sm;
+  }
+
+  div[role="group"] {
+    @apply flex flex-col border-b border-black;
+  }
+
+  div[role="group"] > input, div[role="group"] > div[contentEditable] {
+    @apply focus:outline-none focus-visible:border-b focus-visible:border-purple
+  }
+
+  .contribute-form fieldset {
+    @apply flex flex-col md:space-y-0 space-y-2;
+  }
+
+  .contribute-form fieldset > div {
+    @apply flex space-x-2 items-center;
+  }
+
+  input[type="checkbox"] {
+    @apply appearance-none checked:bg-purple h-3 w-3 rounded-sm border
+  }
+
+  button[type="submit"] {
+    @apply bg-purple/20 rounded-lg py-2 hover:bg-purple/30 active:bg-purple/40 text-sm
+    transition-all duration-100;
   }
 }

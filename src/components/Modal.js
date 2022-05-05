@@ -1,4 +1,5 @@
 import FocusLock from 'react-focus-lock';
+import { Link } from 'react-router-dom';
 
 const Modal = ({setShowModal}) => {
   return (
@@ -14,10 +15,8 @@ const Modal = ({setShowModal}) => {
           If you have any general feedback (good or bad), feel free to drop me a message <a href="https://forms.gle/ivY3YVdxd3x2Zdqq6" rel="noopener nofollow noreferrer" target="_blank"> here</a>.
         </p>
         <p className="mt-1">
-          If you would like to contribute to the questions, I'm working on it. For the time being,
-          drop me a message at <a href="https://forms.gle/ivY3YVdxd3x2Zdqq6" rel="noopener nofollow noreferrer" target="_blank"> the same link</a>. 
+          If you would like to contribute to the questions, you can now submit on the <Link to="../contribute"><button onClick={setShowModal}> Contribute</button></Link> page.
         </p>
-        <p className="mt-6"> <small> Last updated: 5 May 2022 </small> </p>
       </div>
     </div>
     </FocusLock>

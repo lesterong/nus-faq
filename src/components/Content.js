@@ -1,7 +1,8 @@
 import Sidebar from "./Sidebar";
 import Accordion from "./Accordion";
 import Navbar from "./Navbar";
-import { useSearchParams } from "react-router-dom";
+import Contribute from "./Contribute";
+import { useParams, useSearchParams } from "react-router-dom";
 
 const Content = () => {
   let [searchParams, setSearchParams] = useSearchParams();
@@ -13,12 +14,16 @@ const Content = () => {
     setQuery: setQuery,
   }
 
+  let params = useParams();
+  let isCat = params.currCat !== 'contribute';
+
   return (
     <>
     <Navbar handleQuery={handleQuery} />
     <div className="content">
-      <Sidebar currQuery={currQuery} />
-      <Accordion currQuery={currQuery} />
+      {isCat && <><Sidebar currQuery={currQuery} />
+      <Accordion currQuery={currQuery} /> </>}
+      {!isCat && <Contribute />}
     </div>
     </>
   )

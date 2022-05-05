@@ -6,10 +6,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Navigate to='prospective' />} />
-        <Route
-          path="/:currCat"
-          element={<Content />}
-        />
+        <Route path="/:currCat" element={<Content />} />
       </Routes>
     </div>
   );

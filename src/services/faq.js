@@ -1,4 +1,4 @@
-const baseUrl = './db.json'
+const baseUrl = 'https://cs-faq-a150f-default-rtdb.asia-southeast1.firebasedatabase.app/'
 
 const getAll = () => {
   const init = {
@@ -8,10 +8,23 @@ const getAll = () => {
       'Content-Type': 'application/json',
     },
   };
-  const request = fetch(baseUrl, init);
+  const request = fetch(`./main.json`, init);
   return request.then((response) => response.json());
 };
 
-const faqObject = { getAll }
+const create = (faq) => {
+  const init = {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(faq)
+  };
+  const request = fetch(`${baseUrl}contribute.json`, init);
+  return request.then((response) => response.json());
+}
+
+const faqObject = { getAll, create }
 
 export default faqObject;
