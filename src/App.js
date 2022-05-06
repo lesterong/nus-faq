@@ -1,12 +1,14 @@
 import Content from "./components/Content";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import Home from "./components/Home";
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Navigate to='prospective' />} />
-        <Route path="/:currCat" element={<Content />} />
+        <Route path="/" element={<Home />} />
+        <Route path=":major/:currCat" element={<Content />} />
+        <Route path=":major/*" element={<Content />} />
       </Routes>
     </div>
   );

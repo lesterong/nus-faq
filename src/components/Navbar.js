@@ -9,7 +9,7 @@ import { useNavigate, useParams } from "react-router-dom";
 const Navbar = ({handleQuery}) => {
   const {currQuery, setQuery} = handleQuery;
   let params = useParams();
-  let currCat = params.currCat;
+  let currCat = params.currCat || '';  
   const isValidCat = currCat === 'prospective' || currCat === 'incoming' || currCat === 'current';
   const displayCat = currCat.charAt(0).toUpperCase() + currCat.slice(1);
 
@@ -23,30 +23,41 @@ const Navbar = ({handleQuery}) => {
     : 'flex space-x-2'
 
   let navigate = useNavigate();
+  const major = params.major;
+
+  let navbarStyle;
+  switch (major) {
+    case 'cs':
+      navbarStyle = "bg-cs"
+      break;
+    default:
+      break;
+  }
 
   return (
     <>
     {showModal && <Modal setShowModal={() => setShowModal(false)} />}
-    <nav>
-      <button aria-label="Logo" className={hideLogo} onClick={() => navigate('/prospective')}>
-        <Logo />
-        <h1><b> NUS </b> CS FAQ</h1>
+    <nav className={`${navbarStyle}`}>
+      <button aria-label="Logo" className={`${hideLogo} focus-white`} onClick={() => navigate('/')}>
+        <Logo major={major} />
+        <h1><b> NUS </b> {major.toUpperCase()} FAQ</h1>
       </button>
 
       {showSearch && isValidCat ?
-      <div className="searchbar">
+      <div className="flex items-center text-white md:w-8/12 md:max-w-md justify-between space-x-2 w-screen">
         <Search />
         <input 
+          className="placeholder:text-white/70 focus:border-b outline-none flex-grow bg-transparent w-52"
           type="text"
           placeholder={isValidCat ? `Searching under ${displayCat} Students`: 'Select a category to search'}
           value={currQuery || ''}
           onChange={(e) => setQuery(e.target.value)}
           autoFocus
         />
-        <button aria-label="Close search" onClick={handleClose}>
+        <button className="focus-white" aria-label="Close search" onClick={handleClose}>
           <Close />
         </button>
-      </div> : 
+      </div> :
       
       <div className="flex space-x-2">
         {isValidCat && <button

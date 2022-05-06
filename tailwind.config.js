@@ -11,9 +11,10 @@ module.exports = {
       transparent: 'transparent',
       current: 'currentColor',
       'white': '#FFFFFF',
-      'purple': '#6F73D2',
       'gray': '#F8F8FA',
       'black': '#31081F',
+      'default': '#DB2777',
+      'cs': '#4357AD'
     },
   },
   plugins: [],
