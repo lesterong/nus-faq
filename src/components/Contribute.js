@@ -4,6 +4,7 @@ import faqService from "../services/faq";
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate, useParams } from "react-router-dom";
 import { Spinner } from "../assets/Spinner";
+import Editor from "./Editor";
 
 const Contribute = () => {
   const [question, setQuestion] = useState('');
@@ -66,7 +67,7 @@ const Contribute = () => {
   }
 
   let btnStyle = "rounded-lg py-2 text-sm transition-all duration-100";
-  let focusStyle = "focus:outline-none focus-visible:border-b";
+  let focusStyle = "focus:outline-none border-b";
   let checkboxStyle = "appearance-none h-3 w-3 rounded-sm border"
   let baseBtnStyle = "focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-50 focus-visible:ring-offset-0"
   switch (major) {
@@ -81,9 +82,9 @@ const Contribute = () => {
   }
 
   return (
-    <div className="p-4 flex place-items-center justify-items-center mx-auto max-w-lg">
+    <div className="p-4 flex justify-items-center mx-auto max-w-lg">
       <form 
-        className="flex flex-col space-y-3 bg-white py-4 px-6 rounded-lg shadow-sm" onSubmit={handleSubmit}
+        className="flex flex-col space-y-3 bg-white py-4 px-6 rounded-lg shadow-sm h-max" onSubmit={handleSubmit}
       >
       {showSuccess && 
         <>
@@ -122,16 +123,10 @@ const Contribute = () => {
             required
           />
         </div>
-        <div role="group">
-          <label htmlFor="answer">Answer</label>
-          <div 
-            className={focusStyle}
-            contentEditable
-            suppressContentEditableWarning={true}
-            id="answer" 
-            name="answer"
-            onInput={e => setAnswer(e.target.innerText)} /> 
-        </div>
+        <Editor
+          updateAns={(str) => setAnswer(str)}
+          major={major}
+        />
         <fieldset className="flex flex-col md:space-y-0 space-y-2">
           <legend>Category</legend>
           <div className="checkbox-group">
@@ -170,10 +165,9 @@ const Contribute = () => {
         </fieldset>
 
         <div role="group">
-          <label htmlFor="source"> Source (URL) </label>
+          <label htmlFor="source"> Source </label>
           <input
             className={focusStyle}
-            placeholder="https://"
             type="text"
             id="source"
             value={source}

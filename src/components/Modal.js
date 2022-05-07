@@ -15,9 +15,9 @@ const Modal = ({setShowModal}) => {
 
   return (
     <FocusLock>
-    <div className="absolute bg-black/40 w-screen h-screen flex z-20" onClick={setShowModal}>
+    <div className="modal-bg" onClick={setShowModal}>
       <div 
-        className="bg-white md:w-[30rem] w-screen h-max p-4 my-auto md:mx-auto rounded-md shadow-sm mx-4"
+        className="modal-content"
         onClick={(e) => e.stopPropagation()}
       >
         <h2> About this site </h2>

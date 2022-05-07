@@ -53,17 +53,29 @@
   }
 
   div[role="group"] {
-    @apply flex flex-col border-b border-black;
+    @apply flex flex-col border-black;
   }
 
   .focus-white {
     @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white rounded-lg;
+  }
+
+  button[disabled] svg {
+    @apply fill-black/30
   }
 }
 
 @layer utilities {
   .checkbox-group {
     @apply flex space-x-2 items-center;
+  }
+
+  .modal-bg {
+    @apply absolute bg-black/40 w-screen h-screen flex z-20 top-0 left-0;
+  }
+
+  .modal-content {
+    @apply bg-white md:w-[30rem] w-screen h-max p-4 my-auto md:mx-auto rounded-md shadow-sm mx-4;
   }
 
   .major-btn {
@@ -74,5 +86,9 @@
   
   .cs-content a {
     @apply text-cs;
+  }
+
+  .active-menu-btn {
+    @apply bg-black/10 rounded-md
   }
 }
