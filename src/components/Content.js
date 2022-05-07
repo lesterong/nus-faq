@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import Contribute from "./Contribute";
 import { useParams, useSearchParams } from "react-router-dom";
 import Home from "./Home";
+import Majors from "../utils/Majors"
 
 const Content = () => {
   let [searchParams, setSearchParams] = useSearchParams();
@@ -16,9 +17,9 @@ const Content = () => {
   }
 
   let params = useParams();
-  let isCat = params.currCat !== 'contribute';
+  let isContribute = params.currCat === 'contribute';
 
-  if (params.major !== 'cs' && params.major !== 'contribute') {
+  if (!Majors.includes(params.major)) {
     return <Home notFound={true}/>
   }
 
@@ -26,13 +27,13 @@ const Content = () => {
     <>
     <Navbar handleQuery={handleQuery} />
     <div className="content">
-      {(isCat && params.major !== 'contribute') &&
+      {!isContribute ?
         <>
         <Sidebar currQuery={currQuery} />
         <Accordion currQuery={currQuery} /> 
-        </>
+        </> :
+        <Contribute />
       }
-      {(!isCat || params.major === 'contribute') && <Contribute />}
     </div>
     </>
   )

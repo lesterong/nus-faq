@@ -3,16 +3,16 @@ import faqService from "../services/faq";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Spinner } from "../assets/Spinner";
+import Categories from "../utils/Categories";
 
 const Accordion = ({currQuery}) => {
   let params = useParams();
   let currCat = params.currCat;
   let major = params.major;
   const [loading, setLoading] = useState(true);
-
-  const isValidCat = currCat === 'prospective' || currCat === 'incoming' || currCat === 'current';
-
   const [faqs, setFaqs] = useState([]);
+
+  const isValidCat = Categories.includes(currCat)
 
   const getFaq = () => {
     faqService.getAll(major).then((initial) => {

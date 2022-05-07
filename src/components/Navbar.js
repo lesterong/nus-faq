@@ -5,12 +5,13 @@ import Info from "../assets/Info";
 import Modal from "./Modal";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import Categories from "../utils/Categories";
 
 const Navbar = ({handleQuery}) => {
   const {currQuery, setQuery} = handleQuery;
   let params = useParams();
   let currCat = params.currCat || '';  
-  const isValidCat = currCat === 'prospective' || currCat === 'incoming' || currCat === 'current';
+  const isValidCat = Categories.includes(currCat)
   const displayCat = currCat.charAt(0).toUpperCase() + currCat.slice(1);
 
   const [showModal, setShowModal] = useState(false);

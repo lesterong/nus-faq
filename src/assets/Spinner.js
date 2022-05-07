@@ -1,4 +1,4 @@
-export const Spinner = ({major}) => {
+export const Spinner = ({major, size='h-16'}) => {
   let fillStyle = 'fill-default';
   switch (major) {
     case 'cs':
@@ -9,7 +9,7 @@ export const Spinner = ({major}) => {
 
   }
   return (
-    <svg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg' className={`animate-spin ${fillStyle} h-16 mx-auto`}>
+    <svg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg' className={`animate-spin ${fillStyle} ${size} mx-auto`}>
       <path
         fillRule='evenodd'
         clipRule='evenodd'
