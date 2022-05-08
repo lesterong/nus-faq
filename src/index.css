@@ -60,7 +60,7 @@
     @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white rounded-lg;
   }
 
-  button[disabled] svg {
+  .editor-menu > button[disabled] > svg {
     @apply fill-black/30
   }
 }
@@ -71,7 +71,15 @@
   }
 
   .modal-bg {
-    @apply absolute bg-black/40 w-screen h-screen flex z-20 top-0 left-0;
+    @apply opacity-0 absolute bg-black/40 w-screen h-screen flex z-20 top-0 left-0 transition-opacity duration-100;
+  }
+
+  .modal-bg--after-open {
+    @apply opacity-100;
+  }
+
+  .modal-bg--before-close {
+    @apply opacity-0;
   }
 
   .modal-content {

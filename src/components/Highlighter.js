@@ -1,8 +1,7 @@
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
 const Highlight = ({ query, text }) => {
-  let params = useParams();
-  const major = params.major
+  let { major } = useParams();
   let highlightStyle;
   switch (major) {
     case 'cs':
