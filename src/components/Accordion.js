@@ -34,9 +34,9 @@ const Accordion = ({ currQuery }) => {
         <div>
           <Spinner major={major} />
           <p className="text-center">
-            Loading
+            Loading&nbsp;
             {major.toUpperCase()}
-            FAQs
+            &nbsp;FAQs
           </p>
         </div>
       )}

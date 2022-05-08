@@ -44,13 +44,13 @@ const AboutModal = ({ isOpen, onRequestClose }) => {
             If you would like to contribute to the&nbsp;
             {major.toUpperCase()}
             &nbsp;FAQ, you can submit your questions&nbsp;
-            <Link className={linkStyle} to={`../${major}/contribute`}>here</Link>
+            <Link className={linkStyle} onClick={onRequestClose} to={`../${major}/contribute`}>here</Link>
             .
           </>
         ) : (
           <>
             You can now submit your questions and answers for all majors in NUS&nbsp;
-            <Link className={linkStyle} to={`../${major}/contribute`}>here</Link>
+            <Link className={linkStyle} onClick={onRequestClose} to="../contribute">here</Link>
             !
           </>
         )}
