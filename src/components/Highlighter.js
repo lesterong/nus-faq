@@ -1,15 +1,9 @@
 import { useParams } from 'react-router-dom';
+import styleScheme from '../utils/styleScheme';
 
 const Highlight = ({ query, text }) => {
-  let { major } = useParams();
-  let highlightStyle;
-  switch (major) {
-    case 'cs':
-      highlightStyle = 'bg-cs/30';
-      break;
-    default:
-      break;
-  }
+  let { major = 'home' } = useParams();
+  const { highlightColor } = styleScheme[major];
 
   const queryLength = query.length;
   const textLength = text.length;
@@ -18,7 +12,7 @@ const Highlight = ({ query, text }) => {
   return (
     <>
       {text.slice(0, firstIdx)}
-      {query && <mark className={highlightStyle}>{text.substring(firstIdx, lastIdx)}</mark>}
+      {query && <mark className={highlightColor}>{text.substring(firstIdx, lastIdx)}</mark>}
       {text.slice(lastIdx, textLength)}
     </>
   );

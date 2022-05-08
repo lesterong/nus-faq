@@ -6,6 +6,8 @@ import isURL from 'validator/es/lib/isURL';
 import faqService from '../services/faq';
 import Spinner from '../assets/Spinner';
 import Editor from './Editor';
+import styleScheme from '../utils/styleScheme';
+import categories from '../utils/categories';
 
 const Contribute = () => {
   const [question, setQuestion] = useState('');
@@ -21,18 +23,13 @@ const Contribute = () => {
   const [showError, setShowError] = useState(false);
   const [showSourceError, setShowSourceError] = useState(false);
 
-  let linkStyle;
-  switch (major) {
-    case 'cs':
-      linkStyle = 'text-cs';
-      break;
-    default:
-      break;
-  }
+  const {
+    btnStyle, checkboxStyle, textInputStyle, textColor,
+  } = styleScheme[major];
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!isURL(source, { protocols: ['https'] })) {
+    if (source && !isURL(source, { protocols: ['https'] })) {
       setShowSourceError(true);
       return;
     }
@@ -53,6 +50,7 @@ const Contribute = () => {
       .then(() => {
         setLoading(false);
         setShowError(false);
+        setShowSourceError(false);
         setQuestion('');
         setAnswer('');
         setCategory([]);
@@ -71,16 +69,8 @@ const Contribute = () => {
       : setCategory(category.filter((val) => val !== e.target.value))
   );
 
-  let btnStyle = 'rounded-lg py-2 text-sm transition-all duration-100';
-  let focusStyle = 'focus:outline-none border-b';
-  let checkboxStyle = 'appearance-none h-3 w-3 rounded-sm border';
-  let baseBtnStyle = 'focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-50 focus-visible:ring-offset-0';
   switch (major) {
     case 'cs':
-      btnStyle += ' bg-cs/20 hover:bg-cs/30 active:bg-cs/40';
-      focusStyle += ' focus-visible:border-cs';
-      checkboxStyle += ' checked:bg-cs';
-      baseBtnStyle += ' focus-visible:ring-cs';
       break;
     default:
       break;
@@ -103,7 +93,7 @@ const Contribute = () => {
                   setShowSuccess(false);
                   navigate('./../prospective');
                 }}
-                className={`${btnStyle} ${baseBtnStyle} flex-grow`}
+                className={`${btnStyle} flex-grow`}
               >
                 Back to FAQ
               </button>
@@ -111,7 +101,7 @@ const Contribute = () => {
                 type="button"
                 aria-label="Contribute more"
                 onClick={() => setShowSuccess(false)}
-                className={`${btnStyle} ${baseBtnStyle} bg-white hover:bg-black/10 active:bg-black/20 border flex-grow`}
+                className={`${btnStyle} bg-white hover:bg-black/10 active:bg-black/20 border flex-grow`}
               >
                 Contribute more
               </button>
@@ -128,7 +118,7 @@ const Contribute = () => {
             <div role="group">
               <label htmlFor="question">Question*</label>
               <input
-                className={focusStyle}
+                className={textInputStyle}
                 type="text"
                 id="question"
                 name="question"
@@ -137,51 +127,31 @@ const Contribute = () => {
                 required
               />
             </div>
-            <Editor
-              updateAns={(str) => setAnswer(str)}
-              major={major}
-            />
+            <Editor updateAns={(str) => setAnswer(str)} />
             <fieldset className="flex flex-col md:space-y-0 space-y-2">
               <legend>Category</legend>
-              <div className="checkbox-group">
-                <input
-                  className={checkboxStyle}
-                  name="Category"
-                  type="checkbox"
-                  id="prospective"
-                  value="prospective"
-                  onChange={handleCheckbox}
-                />
-                <label htmlFor="prospective">Prospective Students</label>
-              </div>
-              <div className="checkbox-group">
-                <input
-                  className={checkboxStyle}
-                  name="Category"
-                  type="checkbox"
-                  id="incoming"
-                  value="incoming"
-                  onChange={handleCheckbox}
-                />
-                <label htmlFor="incoming">Incoming Students</label>
-              </div>
-              <div className="checkbox-group">
-                <input
-                  className={checkboxStyle}
-                  name="Category"
-                  type="checkbox"
-                  id="current"
-                  value="current"
-                  onChange={handleCheckbox}
-                />
-                <label htmlFor="current">Current Students</label>
-              </div>
+              {categories.map((cat) => (
+                <div key={cat} className="checkbox-group">
+                  <input
+                    className={checkboxStyle}
+                    name="category"
+                    type="checkbox"
+                    id={cat}
+                    value={cat}
+                    onChange={handleCheckbox}
+                  />
+                  <label htmlFor={cat}>
+                    {cat.charAt(0).toUpperCase() + cat.slice(1)}
+                    &nbsp;Students
+                  </label>
+                </div>
+              ))}
             </fieldset>
 
             <div role="group">
               <label htmlFor="source"> Source (Website)</label>
               <input
-                className={focusStyle}
+                className={textInputStyle}
                 type="text"
                 id="source"
                 value={source}
@@ -190,7 +160,7 @@ const Contribute = () => {
               {showSourceError && <p className="text-red text-sm mt-1"> Invalid link. </p>}
             </div>
             <button
-              className={`${btnStyle} ${baseBtnStyle}`}
+              className={btnStyle}
               disabled={loading}
               type="submit"
             >
@@ -202,7 +172,7 @@ const Contribute = () => {
         {showError && (
           <div className="text-red">
             Network error. If this persists, drop me a message on the&nbsp;
-            <a className={linkStyle} href="https://forms.gle/ivY3YVdxd3x2Zdqq6" rel="noopener nofollow noreferrer" target="_blank">feedback form</a>
+            <a className={textColor} href="https://forms.gle/ivY3YVdxd3x2Zdqq6" rel="noopener nofollow noreferrer" target="_blank">feedback form</a>
             .
           </div>
         )}

@@ -1,27 +1,15 @@
 import { useState } from 'react';
 import Modal from 'react-modal';
+import { useParams } from 'react-router-dom';
 import isURL from 'validator/es/lib/isURL';
+import styleScheme from '../utils/styleScheme';
 
-const LinkModal = ({ major, saveLink, handleUrl }) => {
+const LinkModal = ({ saveLink, handleUrl }) => {
   Modal.setAppElement('#root');
   const add = useState(!handleUrl.url);
   const [error, setError] = useState(false);
-
-  let btnStyle = 'rounded-lg py-2 text-sm transition-all duration-100';
-  let focusStyle = 'focus:outline-none border-b';
-  let baseBtnStyle = 'focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-50 focus-visible:ring-offset-0';
-  switch (major) {
-    case 'cs':
-      btnStyle += ' bg-cs/20 hover:bg-cs/30 active:bg-cs/40';
-      focusStyle += ' focus-visible:border-cs';
-      baseBtnStyle += ' focus-visible:ring-cs';
-      break;
-    default:
-      btnStyle += ' bg-default/20 hover:bg-default/30 active:bg-default/40';
-      focusStyle += ' focus-visible:border-default';
-      baseBtnStyle += ' focus-visible:ring-default';
-      break;
-  }
+  let { major = 'home' } = useParams();
+  const { textInputStyle, btnStyle } = styleScheme[major];
 
   const handleSave = isURL(handleUrl.url, { protocols: ['https'] }) || !handleUrl.url
     ? () => { setError(false); saveLink(); }
@@ -38,8 +26,12 @@ const LinkModal = ({ major, saveLink, handleUrl }) => {
       className="modal-content"
       overlayClassName={overlayStyle}
       isOpen={handleUrl.showModal}
-      onRequestClose={handleUrl.closeModal}
-      closeTimeoutMS={120}
+      onRequestClose={() => {
+        handleUrl.closeModal();
+        setError(false);
+      }}
+      closeTimeoutMS={100}
+      htmlOpenClassName="overflow-hidden"
     >
       <form onSubmit={(e) => {
         e.stopPropagation();
@@ -51,7 +43,7 @@ const LinkModal = ({ major, saveLink, handleUrl }) => {
           {add[0] ? 'Add Link' : 'Edit Link'}
         </h2>
         <input
-          className={`${focusStyle} w-full border-b focus:outline-none`}
+          className={`${textInputStyle} w-full border-b focus:outline-none`}
           type="text"
           onChange={(e) => handleUrl.setUrl(e.target.value)}
           value={handleUrl.url}
@@ -62,7 +54,7 @@ const LinkModal = ({ major, saveLink, handleUrl }) => {
         )}
         <button
           onClick={handleSave}
-          className={`${baseBtnStyle} ${btnStyle} w-full mt-3`}
+          className={`${btnStyle} w-full mt-3`}
           type="button"
         >
           Save

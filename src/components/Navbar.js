@@ -4,15 +4,16 @@ import Logo from '../assets/Logo';
 import Search from '../assets/Search';
 import Close from '../assets/Close';
 import Info from '../assets/Info';
-import Categories from '../utils/Categories';
+import categories from '../utils/categories';
 import AboutModal from './AboutModal';
+import styleScheme from '../utils/styleScheme';
 
 const Navbar = ({ handleQuery }) => {
+  let navigate = useNavigate();
   const { currQuery, setQuery } = handleQuery;
-  let params = useParams();
-  let currCat = params.currCat || '';
-  let { major } = params;
-  const isValidCat = Categories.includes(currCat);
+  let { major, currCat = '' } = useParams();
+  const { bgColor } = styleScheme[major];
+  const isValidCat = categories.includes(currCat);
   const displayCat = currCat.charAt(0).toUpperCase() + currCat.slice(1);
 
   const [showAbout, setShowAbout] = useState(false);
@@ -24,28 +25,17 @@ const Navbar = ({ handleQuery }) => {
     ? 'hidden md:flex md:space-x-2'
     : 'flex space-x-2';
 
-  let navigate = useNavigate();
-
-  let navbarStyle;
-  switch (major) {
-    case 'cs':
-      navbarStyle = 'bg-cs';
-      break;
-    default:
-      break;
-  }
-
   return (
     <>
       <AboutModal isOpen={showAbout} onRequestClose={() => setShowAbout(false)} />
-      <nav className={`${navbarStyle}`}>
+      <nav className={bgColor}>
         <button
           type="button"
           aria-label="Logo"
           className={`${hideLogo} focus-white`}
           onClick={() => navigate('/')}
         >
-          <Logo major={major} />
+          <Logo />
           <h1>
             <b> NUS </b>
             {major.toUpperCase()}

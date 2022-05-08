@@ -49,7 +49,7 @@
   }
 
   ul {
-    @apply list-disc pl-4
+    @apply list-disc pl-4;
   }
 
   div[role="group"] {
@@ -61,7 +61,7 @@
   }
 
   .editor-menu > button[disabled] > svg {
-    @apply fill-black/30
+    @apply fill-black/30;
   }
 }
 
@@ -91,12 +91,12 @@
     focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-opacity-50 focus-visible:ring-offset-0
     hover:bg-default/20 active:bg-default/30 transition-colors duration-100;
   }
-  
-  .cs-content a {
-    @apply text-cs;
-  }
 
   .active-menu-btn {
-    @apply bg-black/10 rounded-md
+    @apply bg-black/10 rounded-md;
+  }
+
+  .cs-content a {
+    @apply text-cs;
   }
 }

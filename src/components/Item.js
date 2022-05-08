@@ -4,6 +4,7 @@ import { DateTime } from 'luxon';
 import { useParams } from 'react-router-dom';
 import Arrow from '../assets/Arrow';
 import Highlight from './Highlighter';
+import styleScheme from '../utils/styleScheme';
 
 const Item = ({ q, currQuery }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,26 +14,14 @@ const Item = ({ q, currQuery }) => {
 
   let params = useParams();
   const { major } = params;
-  let baseBtnStyle = `
-    p-3 flex w-full items-center place-content-between text-left rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-50 focus-visible:ring-offset-0
-  `;
-  let contentStyle = 'px-3 pb-3';
-
-  switch (major) {
-    case 'cs':
-      baseBtnStyle += ' focus-visible:ring-cs';
-      contentStyle += ' cs-content';
-      break;
-    default:
-      break;
-  }
+  const { contentStyle, itemStyle } = styleScheme[major];
 
   return (
     <div className="mb-3 bg-white rounded-lg md:w-[32rem] w-[96vw] shadow-sm">
       <button
         type="button"
         aria-label="item title"
-        className={baseBtnStyle}
+        className={itemStyle}
         onClick={() => setIsOpen(!isOpen)}
       >
         <h2>
@@ -41,7 +30,7 @@ const Item = ({ q, currQuery }) => {
         <Arrow isOpen={isOpen} />
       </button>
       {isOpen && (
-      <div className={contentStyle}>
+      <div className={`px-3 pb-3 ${contentStyle}`}>
         {answer}
         <div className="flex justify-between border-t mt-4 border-black/10">
           <p>

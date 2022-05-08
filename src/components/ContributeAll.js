@@ -27,7 +27,7 @@ const ContributeAll = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!isURL(source, { protocols: ['https'] })) {
+    if (source && !isURL(source, { protocols: ['https'] })) {
       setShowSourceError(true);
       return;
     }
@@ -49,6 +49,7 @@ const ContributeAll = () => {
       .then(() => {
         setLoading(false);
         setShowError(false);
+        setShowSourceError(false);
         setFaculty('');
         setMajor('');
         setQuestion('');
@@ -83,7 +84,7 @@ const ContributeAll = () => {
           className="focus-white flex space-x-2"
           aria-label="Logo"
         >
-          <Logo major="nus" />
+          <Logo />
           <h1>
             <b> NUS </b>
             FAQ
@@ -156,10 +157,7 @@ const ContributeAll = () => {
                 required
               />
             </div>
-            <Editor
-              updateAns={(str) => setAnswer(str)}
-              major=""
-            />
+            <Editor updateAns={(str) => setAnswer(str)} />
             <fieldset className="flex flex-col md:space-y-0 space-y-2">
               <legend>Category</legend>
               <div className="checkbox-group">

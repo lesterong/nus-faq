@@ -2,10 +2,11 @@ import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Link from '@tiptap/extension-link';
 import { useCallback, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import * as Icons from '../assets/EditorIcons';
 import LinkModal from './LinkModal';
 
-const MenuBar = ({ editor, handleUrl, major }) => {
+const MenuBar = ({ editor, handleUrl }) => {
   const openModal = useCallback(() => {
     handleUrl.setUrl(editor.getAttributes('link').href || '');
     handleUrl.openModal();
@@ -25,35 +26,13 @@ const MenuBar = ({ editor, handleUrl, major }) => {
     handleUrl.setUrl('');
   }, [editor, handleUrl]);
 
-  const saveLink = useCallback(() => {
-    if (handleUrl.url) {
-      if (handleUrl.url.includes('https')) {
-        editor.chain().focus().extendMarkRange('link')
-          .setLink({ href: handleUrl.url, target: '_blank' })
-          .run();
-      } else {
-        editor.chain().focus().extendMarkRange('link')
-          .setLink({ href: `https://${handleUrl.url}`, target: '_blank' })
-          .run();
-      }
-    } else {
-      editor.chain().focus().extendMarkRange('link').unsetLink()
-        .run();
-    }
-    handleUrl.setUrl('');
-    handleUrl.closeModal();
-  }, [editor, handleUrl]);
-
   if (!editor) {
     return null;
   }
 
   return (
     <div className="flex justify-between">
-      <LinkModal major={major} saveLink={saveLink} handleUrl={handleUrl} />
-      <div>
-        Answer
-      </div>
+      Answer
       <div className="editor-menu flex space-x-2 place-items-start shrink-0">
         <button
           onClick={() => editor.chain().focus().undo().run()}
@@ -102,9 +81,10 @@ const MenuBar = ({ editor, handleUrl, major }) => {
   );
 };
 
-const Editor = ({ updateAns, major }) => {
+const Editor = ({ updateAns }) => {
   const [url, setUrl] = useState('');
   const [showModal, setShowModal] = useState(false);
+  let { major } = useParams();
 
   const handleUrl = {
     url,
@@ -117,14 +97,11 @@ const Editor = ({ updateAns, major }) => {
   const editor = useEditor({
     editorProps: {
       attributes: {
-        class: `border-b focus:outline-none focus-visible:border-b focus-visible:border-${major || 'default'}`,
+        class: `border-b focus:outline-none focus-visible:border-${major || 'default'}`,
       },
     },
     extensions: [
       Link.configure({
-        HTMLAttributes: {
-          class: `text-${major} underline`,
-        },
         openOnClick: false,
         autolink: false,
       }),
@@ -147,10 +124,32 @@ const Editor = ({ updateAns, major }) => {
     },
   });
 
+  const saveLink = useCallback(() => {
+    if (url) {
+      if (url.includes('https')) {
+        editor.chain().focus().extendMarkRange('link')
+          .setLink({ href: url, target: '_blank' })
+          .run();
+      } else {
+        editor.chain().focus().extendMarkRange('link')
+          .setLink({ href: `https://${url}`, target: '_blank' })
+          .run();
+      }
+    } else {
+      editor.chain().focus().extendMarkRange('link').unsetLink()
+        .run();
+    }
+    setUrl('');
+    setShowModal(false);
+  }, [editor, url]);
+
   return (
     <>
-      <MenuBar editor={editor} handleUrl={handleUrl} major={major} />
-      <EditorContent editor={editor} />
+      <LinkModal saveLink={saveLink} handleUrl={handleUrl} />
+      <div className={major && `${major}-content`}>
+        <MenuBar editor={editor} handleUrl={handleUrl} />
+        <EditorContent editor={editor} />
+      </div>
     </>
   );
 };

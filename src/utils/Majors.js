@@ -1,5 +1,5 @@
-const Majors = [
+const majors = [
   'cs',
 ];
 
-export default Majors;
+export default majors;

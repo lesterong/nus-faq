@@ -18,7 +18,7 @@ const Home = ({ notFound = false }) => {
           aria-label="Logo"
           type="button"
         >
-          <Logo major="nus" />
+          <Logo />
           <h1>
             <b> NUS </b>
             FAQ

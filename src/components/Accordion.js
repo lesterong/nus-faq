@@ -3,16 +3,15 @@ import { useEffect, useState } from 'react';
 import Item from './Item';
 import faqService from '../services/faq';
 import Spinner from '../assets/Spinner';
-import Categories from '../utils/Categories';
+import categories from '../utils/categories';
 
 const Accordion = ({ currQuery }) => {
   let params = useParams();
   const { currCat, major } = params;
+  const isValidCat = categories.includes(currCat);
+
   const [loading, setLoading] = useState(true);
   const [faqs, setFaqs] = useState([]);
-
-  const isValidCat = Categories.includes(currCat);
-
   const getFaq = () => {
     faqService.getAll(major).then((initial) => {
       if (initial[`${major}`]) {

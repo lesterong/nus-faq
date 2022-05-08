@@ -1,15 +1,12 @@
-const Spinner = ({ major, size = 'h-16' }) => {
-  let fillStyle = 'fill-default';
-  switch (major) {
-    case 'cs':
-      fillStyle = 'fill-cs';
-      break;
-    default:
-      break;
-  }
+import { useParams } from 'react-router-dom';
+import styleScheme from '../utils/styleScheme';
+
+const Spinner = ({ size = 'h-16' }) => {
+  let { major = 'home' } = useParams();
+  const { svgColor } = styleScheme[major];
 
   return (
-    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={`animate-spin ${fillStyle} ${size} mx-auto`}>
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={`animate-spin ${svgColor} ${size} mx-auto`}>
       <path
         fillRule="evenodd"
         clipRule="evenodd"

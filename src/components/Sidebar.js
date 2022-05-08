@@ -1,51 +1,30 @@
 import { useNavigate, useParams } from 'react-router-dom';
+import categories from '../utils/categories';
+import styleScheme from '../utils/styleScheme';
 
 const Sidebar = ({ currQuery }) => {
   let navigate = useNavigate();
   let { major, currCat } = useParams();
-  const appendQuery = !currQuery
-    ? ''
-    : `?q=${currQuery}`;
+  const { textColor, sidebarBtnStyle } = styleScheme[major];
 
-  let baseBtnStyle = `
-    shrink-0 text-left px-2 md:px-6 py-1 md:py-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-50
-  `;
-  let activeBtnStyle;
-  switch (major) {
-    case 'cs':
-      activeBtnStyle = 'text-cs';
-      baseBtnStyle += ' focus-visible:ring-cs';
-      break;
-    default:
-      break;
-  }
+  const appendQuery = currQuery
+    ? `?q=${currQuery}`
+    : '';
 
   return (
     <aside>
-      <button
-        type="button"
-        aria-label="Prospective Students"
-        className={`${currCat === 'prospective' ? activeBtnStyle : 'text-black'} ${baseBtnStyle}`}
-        onClick={() => navigate(`../${major}/prospective${appendQuery}`)}
-      >
-        Prospective Students
-      </button>
-      <button
-        type="button"
-        aria-label="Incoming Students"
-        className={`${currCat === 'incoming' ? activeBtnStyle : 'text-black'} ${baseBtnStyle}`}
-        onClick={() => navigate(`../${major}/incoming${appendQuery}`)}
-      >
-        Incoming Students
-      </button>
-      <button
-        type="button"
-        aria-label="Current Students"
-        className={`${currCat === 'current' ? activeBtnStyle : 'text-black'} ${baseBtnStyle}`}
-        onClick={() => navigate(`../${major}/current${appendQuery}`)}
-      >
-        Current Students
-      </button>
+      {categories.map((cat) => (
+        <button
+          key={cat}
+          className={`${currCat === cat && textColor} ${sidebarBtnStyle}`}
+          type="button"
+          aria-label={`${cat} students`}
+          onClick={() => navigate(`../${major}/${cat}${appendQuery}`)}
+        >
+          {cat.charAt(0).toUpperCase() + cat.slice(1)}
+          &nbsp;Students
+        </button>
+      ))}
     </aside>
   );
 };

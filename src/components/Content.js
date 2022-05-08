@@ -4,22 +4,18 @@ import Accordion from './Accordion';
 import Navbar from './Navbar';
 import Contribute from './Contribute';
 import Home from './Home';
-import Majors from '../utils/Majors';
+import majors from '../utils/majors';
 
 const Content = () => {
   let [searchParams, setSearchParams] = useSearchParams();
   const currQuery = searchParams.get('q');
   const setQuery = (query) => setSearchParams({ q: `${query}` });
+  const handleQuery = { currQuery, setQuery };
 
-  const handleQuery = {
-    currQuery,
-    setQuery,
-  };
+  let { major, currCat } = useParams();
+  let isContribute = currCat === 'contribute';
 
-  let params = useParams();
-  let isContribute = params.currCat === 'contribute';
-
-  if (!Majors.includes(params.major)) {
+  if (!majors.includes(major)) {
     return <Home notFound />;
   }
 
