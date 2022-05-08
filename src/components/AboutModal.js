@@ -18,7 +18,7 @@ const AboutModal = ({ isOpen, onRequestClose }) => {
       overlayClassName={overlayStyle}
       isOpen={isOpen}
       onRequestClose={onRequestClose}
-      closeTimeoutMS={100}
+      closeTimeoutMS={150}
       htmlOpenClassName="overflow-hidden"
     >
       <h2> About this site </h2>

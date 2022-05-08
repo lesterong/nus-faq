@@ -30,7 +30,7 @@ const LinkModal = ({ saveLink, handleUrl }) => {
         handleUrl.closeModal();
         setError(false);
       }}
-      closeTimeoutMS={100}
+      closeTimeoutMS={150}
       htmlOpenClassName="overflow-hidden"
     >
       <form onSubmit={(e) => {

@@ -71,14 +71,14 @@
   }
 
   .modal-bg {
-    @apply opacity-0 absolute bg-black/40 w-screen h-screen flex z-20 top-0 left-0 transition-opacity duration-100;
+    @apply transition-opacity duration-150 opacity-0 bg-black/40 absolute h-screen w-screen top-0 left-0 z-20 flex;
   }
-
-  .modal-bg--after-open {
+  
+  .modal-bg--after-open{
     @apply opacity-100;
   }
-
-  .modal-bg--before-close {
+  
+  .modal-bg--before-close{
     @apply opacity-0;
   }
 
