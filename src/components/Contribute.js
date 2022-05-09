@@ -15,7 +15,7 @@ const Contribute = () => {
   const [category, setCategory] = useState([]);
   const [source, setSource] = useState('');
   const [loading, setLoading] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(true);
+  const [showSuccess, setShowSuccess] = useState(false);
   const time = DateTime.now().toString();
   const { major } = useParams();
   let navigate = useNavigate();

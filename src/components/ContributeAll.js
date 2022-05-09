@@ -7,6 +7,7 @@ import Spinner from '../assets/Spinner';
 import Editor from './Editor';
 import Navbar from './Navbar';
 import categories from '../utils/categories';
+import faculties from '../utils/faculties';
 import styleScheme from '../utils/styleScheme';
 
 const ContributeAll = () => {
@@ -98,24 +99,19 @@ const ContributeAll = () => {
             <h2> Contribute your questions and answers for the NUS FAQ! </h2>
             <label htmlFor="faculty">Faculty*</label>
             <select
-              defaultValue="1"
+              defaultValue="default"
               onChange={(e) => setFaculty(e.target.value)}
               className="border-b focus:outline-none focus:border-default bg-white py-1"
               name="faculty"
               id="faculty"
               required
             >
-              <option disabled hidden value="1"> Select a faculty </option>
-              <option value="fass"> Arts and Social Science </option>
-              <option value="biz"> Business </option>
-              <option value="soc"> Computing </option>
-              <option value="fod"> Dentistry </option>
-              <option value="cde"> Design and Engineering </option>
-              <option value="fol"> Law </option>
-              <option value="yll"> Medicine </option>
-              <option value="yst"> Music </option>
-              <option value="fos"> Science </option>
-              <option value="others"> Others (e.g. NUS College) </option>
+              <option disabled hidden value="default"> Select a faculty </option>
+              {faculties.map((fac) => (
+                <option key={fac.codename} value={fac.codename}>
+                  {fac.name}
+                </option>
+              ))}
             </select>
             <div role="group">
               <label htmlFor="major">Major*</label>
