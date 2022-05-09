@@ -31,7 +31,7 @@ const home = {
   itemStyle: '',
   sideBarBtnStyle: '',
   svgColor: 'fill-default',
-  logoPosX: '6',
+  logoPosX: '',
 };
 
 const styleScheme = { cs, home };

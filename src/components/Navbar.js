@@ -58,7 +58,7 @@ const Navbar = ({ handleQuery }) => {
               <button
                 type="button"
                 className="focus-white"
-                aria-label="Close search"
+                aria-label={currQuery ? 'Clear Search' : 'Close Search'}
                 onClick={handleClose}
               >
                 <Close />
