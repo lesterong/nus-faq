@@ -39,13 +39,7 @@
 
   aside {
     @apply bg-white flex md:flex-col shadow flex-row overflow-x-scroll
-    lg:fixed z-10 sticky top-[52px];
-  }
-
-  @media (min-width: 768px) {
-    aside, .content {
-      height: calc(100vh - 52px);
-    }
+    lg:fixed z-10 sticky top-[52px] md:h-[calc(100vh-52px)];
   }
 
   ul {
@@ -71,7 +65,7 @@
   }
 
   .modal-bg {
-    @apply transition-opacity duration-150 opacity-0 bg-black/40 absolute h-screen w-screen top-0 left-0 z-10 flex;
+    @apply transition-opacity duration-150 opacity-0 bg-black/40 fixed h-screen w-screen top-0 left-0 z-10 flex;
   }
   
   .modal-bg--after-open{
@@ -90,10 +84,6 @@
     @apply py-3 px-6 rounded-lg bg-white shadow-sm mb-3 w-[96vw] max-w-md mx-auto
     focus:outline-none focus-visible:ring-2 focus-visible:ring-black focus-visible:ring-opacity-50 focus-visible:ring-offset-0
     hover:bg-default/20 active:bg-default/30 transition-colors duration-100;
-  }
-
-  .active-menu-btn {
-    @apply bg-black/10 rounded-md;
   }
 
   .cs-content a {

@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import Tippy from '@tippyjs/react';
 import * as Icons from '../assets/EditorIcons';
 import LinkModal from './LinkModal';
+import styleScheme from '../utils/styleScheme';
 
 const MenuBar = ({ editor, handleUrl }) => {
   const openModal = useCallback(() => {
@@ -27,6 +28,9 @@ const MenuBar = ({ editor, handleUrl }) => {
     handleUrl.setUrl('');
   }, [editor, handleUrl]);
 
+  let { major } = useParams();
+  const { editorBtnStyle, activeEditorBtn } = styleScheme[major] || styleScheme.home;
+
   if (!editor) {
     return null;
   }
@@ -38,6 +42,7 @@ const MenuBar = ({ editor, handleUrl }) => {
         <Tippy content="Undo" arrow={false} placement="bottom">
           <button
             onClick={() => editor.chain().focus().undo().run()}
+            className={editorBtnStyle}
             type="button"
             disabled={!editor.can().undo()}
           >
@@ -47,6 +52,7 @@ const MenuBar = ({ editor, handleUrl }) => {
         <Tippy content="Redo" arrow={false} placement="bottom">
           <button
             onClick={() => editor.chain().focus().redo().run()}
+            className={editorBtnStyle}
             type="button"
             disabled={!editor.can().redo()}
           >
@@ -56,7 +62,7 @@ const MenuBar = ({ editor, handleUrl }) => {
         <Tippy content="Bullet list" arrow={false} placement="bottom">
           <button
             onClick={toggleBulletList}
-            className={editor.isActive('bulletList') ? 'active-menu-btn' : ''}
+            className={`${editorBtnStyle} ${editor.isActive('bulletList') && activeEditorBtn}`}
             type="button"
           >
             <Icons.List />
@@ -65,7 +71,7 @@ const MenuBar = ({ editor, handleUrl }) => {
         <Tippy content="Strikethrough" arrow={false} placement="bottom">
           <button
             onClick={toggleStrike}
-            className={editor.isActive('strike') ? 'active-menu-btn' : ''}
+            className={`${editorBtnStyle} ${editor.isActive('strike') && activeEditorBtn}`}
             type="button"
           >
             <Icons.StrikeThrough />
@@ -74,7 +80,7 @@ const MenuBar = ({ editor, handleUrl }) => {
         <Tippy content="Add link" arrow={false} placement="bottom">
           <button
             onClick={openModal}
-            className={editor.isActive('link') ? 'active-menu-btn' : ''}
+            className={`${editorBtnStyle} ${editor.isActive('link') && activeEditorBtn}`}
             type="button"
           >
             <Icons.Link />
@@ -83,6 +89,7 @@ const MenuBar = ({ editor, handleUrl }) => {
         <Tippy content="Remove link" arrow={false} placement="bottom-end">
           <button
             onClick={removeLink}
+            className={editorBtnStyle}
             disabled={!editor.isActive('link')}
             type="button"
           >
