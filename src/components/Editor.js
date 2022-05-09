@@ -3,6 +3,7 @@ import StarterKit from '@tiptap/starter-kit';
 import Link from '@tiptap/extension-link';
 import { useCallback, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Tippy from '@tippyjs/react';
 import * as Icons from '../assets/EditorIcons';
 import LinkModal from './LinkModal';
 
@@ -34,48 +35,60 @@ const MenuBar = ({ editor, handleUrl }) => {
     <div className="flex justify-between">
       Answer
       <div className="editor-menu flex space-x-2 place-items-start shrink-0">
-        <button
-          onClick={() => editor.chain().focus().undo().run()}
-          type="button"
-          disabled={!editor.can().undo()}
-        >
-          <Icons.Undo />
-        </button>
-        <button
-          onClick={() => editor.chain().focus().redo().run()}
-          type="button"
-          disabled={!editor.can().redo()}
-        >
-          <Icons.Redo />
-        </button>
-        <button
-          onClick={toggleBulletList}
-          className={editor.isActive('bulletList') ? 'active-menu-btn' : ''}
-          type="button"
-        >
-          <Icons.List />
-        </button>
-        <button
-          onClick={toggleStrike}
-          className={editor.isActive('strike') ? 'active-menu-btn' : ''}
-          type="button"
-        >
-          <Icons.StrikeThrough />
-        </button>
-        <button
-          onClick={openModal}
-          className={editor.isActive('link') ? 'active-menu-btn' : ''}
-          type="button"
-        >
-          <Icons.Link />
-        </button>
-        <button
-          onClick={removeLink}
-          disabled={!editor.isActive('link')}
-          type="button"
-        >
-          <Icons.Unlink />
-        </button>
+        <Tippy content="Undo" arrow={false} placement="bottom">
+          <button
+            onClick={() => editor.chain().focus().undo().run()}
+            type="button"
+            disabled={!editor.can().undo()}
+          >
+            <Icons.Undo />
+          </button>
+        </Tippy>
+        <Tippy content="Redo" arrow={false} placement="bottom">
+          <button
+            onClick={() => editor.chain().focus().redo().run()}
+            type="button"
+            disabled={!editor.can().redo()}
+          >
+            <Icons.Redo />
+          </button>
+        </Tippy>
+        <Tippy content="Bullet list" arrow={false} placement="bottom">
+          <button
+            onClick={toggleBulletList}
+            className={editor.isActive('bulletList') ? 'active-menu-btn' : ''}
+            type="button"
+          >
+            <Icons.List />
+          </button>
+        </Tippy>
+        <Tippy content="Strikethrough" arrow={false} placement="bottom">
+          <button
+            onClick={toggleStrike}
+            className={editor.isActive('strike') ? 'active-menu-btn' : ''}
+            type="button"
+          >
+            <Icons.StrikeThrough />
+          </button>
+        </Tippy>
+        <Tippy content="Add link" arrow={false} placement="bottom">
+          <button
+            onClick={openModal}
+            className={editor.isActive('link') ? 'active-menu-btn' : ''}
+            type="button"
+          >
+            <Icons.Link />
+          </button>
+        </Tippy>
+        <Tippy content="Remove link" arrow={false} placement="bottom">
+          <button
+            onClick={removeLink}
+            disabled={!editor.isActive('link')}
+            type="button"
+          >
+            <Icons.Unlink />
+          </button>
+        </Tippy>
       </div>
     </div>
   );

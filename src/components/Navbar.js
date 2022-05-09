@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
+import Tippy from '@tippyjs/react';
 import AboutModal from './AboutModal';
 import Logo from '../assets/Logo';
 import Search from '../assets/Search';
@@ -57,36 +58,42 @@ const Navbar = ({ handleQuery = {} }) => {
                 onChange={(e) => setQuery(e.target.value)}
                 autoFocus
               />
-              <button
-                type="button"
-                className="focus-white"
-                aria-label={currQuery ? 'Clear Search' : 'Close Search'}
-                onClick={handleClose}
-              >
-                <Close />
-              </button>
+              <Tippy content={currQuery ? 'Clear Search' : 'Close Search'} arrow={false} placement="bottom-end">
+                <button
+                  type="button"
+                  className="focus-white"
+                  aria-label={currQuery ? 'Clear Search' : 'Close Search'}
+                  onClick={handleClose}
+                >
+                  <Close />
+                </button>
+              </Tippy>
             </div>
           )
           : (
             <div className="flex space-x-2">
               {isValidCat && (
+                <Tippy content="Search" arrow={false} placement="bottom-end">
+                  <button
+                    type="button"
+                    className="focus-white"
+                    aria-label="Search"
+                    onClick={() => setShowSearch(true)}
+                  >
+                    <Search />
+                  </button>
+                </Tippy>
+              )}
+              <Tippy content="About this site" arrow={false} placement="bottom-end">
                 <button
                   type="button"
                   className="focus-white"
-                  aria-label="Search"
-                  onClick={() => setShowSearch(true)}
+                  aria-label="About this site"
+                  onClick={() => setShowAbout(true)}
                 >
-                  <Search />
+                  <Info />
                 </button>
-              )}
-              <button
-                type="button"
-                className="focus-white"
-                aria-label="About this site"
-                onClick={() => setShowAbout(true)}
-              >
-                <Info />
-              </button>
+              </Tippy>
             </div>
           )}
       </nav>
