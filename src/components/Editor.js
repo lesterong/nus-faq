@@ -80,7 +80,7 @@ const MenuBar = ({ editor, handleUrl }) => {
             <Icons.Link />
           </button>
         </Tippy>
-        <Tippy content="Remove link" arrow={false} placement="bottom">
+        <Tippy content="Remove link" arrow={false} placement="bottom-end">
           <button
             onClick={removeLink}
             disabled={!editor.isActive('link')}

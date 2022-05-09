@@ -21,6 +21,7 @@ const AboutModal = ({ isOpen, onRequestClose }) => {
       onRequestClose={onRequestClose}
       closeTimeoutMS={150}
       htmlOpenClassName="overflow-hidden"
+      shouldReturnFocusAfterClose={false}
     >
       <h2> About this site </h2>
       <p className="mt-3">

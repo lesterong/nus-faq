@@ -32,6 +32,7 @@ const LinkModal = ({ saveLink, handleUrl }) => {
       }}
       closeTimeoutMS={150}
       htmlOpenClassName="overflow-hidden"
+      shouldReturnFocusAfterClose={false}
     >
       <form onSubmit={(e) => {
         e.stopPropagation();
