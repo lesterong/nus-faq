@@ -100,3 +100,76 @@
     @apply text-cs;
   }
 }
+
+.tippy-box[data-animation=fade][data-state=hidden] {
+  @apply opacity-0;
+}
+
+[data-tippy-root] {
+  max-width: calc(100vw - 10px)
+}
+
+.tippy-box {
+  @apply relative bg-black/90 text-white text-sm rounded-md;
+  line-height: 1.4;
+  white-space: normal;
+  outline: 0;
+  transition-property: transform, visibility, opacity;
+}
+
+.tippy-box[data-placement^=top] > .tippy-arrow {
+  @apply bottom-0;
+}
+
+.tippy-box[data-placement^=top] >.tippy-arrow:before {
+  @apply -bottom-2 left-0 border-x-8 border-t-8 border-b-0;
+  border-top-color: initial;
+  transform-origin: center top;
+}
+
+.tippy-box[data-placement^=bottom] > .tippy-arrow {
+  @apply top-0;
+}
+
+.tippy-box[data-placement^=bottom] > .tippy-arrow:before {
+  @apply -top-2 left-0 border-x-8 border-b-8 border-t-0;
+  border-bottom-color: initial;
+  transform-origin: center bottom;
+}
+
+.tippy-box[data-placement^=left] > .tippy-arrow {
+  @apply right-0;
+}
+
+.tippy-box[data-placement^=left] > .tippy-arrow:before {
+  @apply -right-2 border-l-8 border-r-0 border-y-8;
+  border-left-color: initial;
+  transform-origin: center left;
+}
+
+.tippy-box[data-placement^=right] > .tippy-arrow {
+  @apply left-0;
+}
+
+.tippy-box[data-placement^=right] > .tippy-arrow:before {
+  @apply -left-2 border-y-8 border-r-8 border-l-0;
+  border-right-color: initial;
+  transform-origin: center right;
+}
+
+.tippy-box[data-inertia][data-state=visible] {
+  transition-timing-function: cubic-bezier(0.54, 1.5, 0.38, 1.11)
+}
+
+.tippy-arrow {
+  @apply w-4 h-4;
+  color: rgb(49 8 31 / 0.9);
+}
+
+.tippy-arrow:before {
+  @apply content-none absolute border-transparent border-solid;
+}
+
+.tippy-content {
+  @apply relative py-1 px-2 z-10;
+}
