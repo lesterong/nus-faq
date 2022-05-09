@@ -69,13 +69,6 @@ const Contribute = () => {
       : setCategory(category.filter((val) => val !== e.target.value))
   );
 
-  switch (major) {
-    case 'cs':
-      break;
-    default:
-      break;
-  }
-
   return (
     <div className="p-4 flex justify-items-center mx-auto max-w-lg">
       <form

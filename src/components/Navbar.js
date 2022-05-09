@@ -8,11 +8,11 @@ import categories from '../utils/categories';
 import AboutModal from './AboutModal';
 import styleScheme from '../utils/styleScheme';
 
-const Navbar = ({ handleQuery }) => {
+const Navbar = ({ handleQuery = {} }) => {
   let navigate = useNavigate();
   const { currQuery, setQuery } = handleQuery;
   let { major, currCat = '' } = useParams();
-  const { bgColor } = styleScheme[major];
+  const { bgColor = 'bg-black' } = styleScheme[major] || {};
   const isValidCat = categories.includes(currCat);
   const displayCat = currCat.charAt(0).toUpperCase() + currCat.slice(1);
 
@@ -38,8 +38,9 @@ const Navbar = ({ handleQuery }) => {
           <Logo />
           <h1>
             <b> NUS </b>
-            {major.toUpperCase()}
-            &nbsp;FAQ
+            {major && major.toUpperCase()}
+            {major && <span>&nbsp;</span>}
+            FAQ
           </h1>
         </button>
 

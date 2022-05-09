@@ -1,39 +1,11 @@
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import Logo from '../assets/Logo';
-import Info from '../assets/Info';
-import AboutModal from './AboutModal';
+import Navbar from './Navbar';
 
 const Home = ({ notFound = false }) => {
-  const [showAbout, setShowAbout] = useState(false);
-
   let navigate = useNavigate();
   return (
     <>
-      <AboutModal isOpen={showAbout} onRequestClose={() => setShowAbout(false)} />
-      <nav>
-        <button
-          onClick={() => navigate('/')}
-          className="focus-white flex space-x-2"
-          aria-label="Logo"
-          type="button"
-        >
-          <Logo />
-          <h1>
-            <b> NUS </b>
-            FAQ
-          </h1>
-        </button>
-        <button
-          type="button"
-          className="focus-white"
-          aria-label="About this site"
-          onClick={() => setShowAbout(true)}
-        >
-          <Info />
-        </button>
-      </nav>
-
+      <Navbar />
       <div className="flex flex-col">
         {notFound && (
         <div className="max-w-md mx-auto">
