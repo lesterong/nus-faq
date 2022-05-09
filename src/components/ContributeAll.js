@@ -24,7 +24,7 @@ const ContributeAll = () => {
   const [showSourceError, setShowSourceError] = useState(false);
 
   const {
-    btnStyle, checkboxStyle, textColor, textInputStyle,
+    btnPrimaryStyle, checkboxStyle, textColor, textInputStyle,
   } = styleScheme.home;
 
   const handleSubmit = (e) => {
@@ -87,7 +87,7 @@ const ContributeAll = () => {
               type="button"
               aria-label="Contribute more"
               onClick={() => setShowSuccess(false)}
-              className={`${btnStyle} bg-white hover:bg-black/10 active:bg-black/20 flex-grow w-full`}
+              className={`${btnPrimaryStyle} flex-grow w-full`}
             >
               Contribute more
             </button>
@@ -173,7 +173,7 @@ const ContributeAll = () => {
               {showSourceError && <p className="text-red text-sm mt-1"> Invalid link. </p>}
             </div>
             <button
-              className={btnStyle}
+              className={btnPrimaryStyle}
               disabled={loading}
               type="submit"
             >

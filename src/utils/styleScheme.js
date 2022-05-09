@@ -1,5 +1,6 @@
 const base = {
-  btn: 'transition-colors duration-100 text-sm rounded-lg py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-50 focus-visible:ring-offset-0',
+  btnPrimary: 'transition-colors duration-100 text-sm rounded-lg py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-50 focus-visible:ring-offset-0',
+  btnSecondary: 'transition-colors duration-100 text-sm rounded-lg py-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-50 focus-visible:ring-offset-0 border bg-white border-black',
   checkbox: 'appearance-none h-3 w-3 rounded-sm border',
   textInput: 'border-b focus:outline-none',
   item: 'p-3 flex w-full items-center place-content-between text-left rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-50 focus-visible:ring-offset-0',
@@ -9,7 +10,8 @@ const base = {
 const cs = {
   bgColor: 'bg-cs',
   textColor: 'text-cs',
-  btnStyle: `${base.btn} bg-cs/20 hover:bg-cs/30 active:bg-cs/40 focus-visible:border-cs`,
+  btnPrimaryStyle: `${base.btnPrimary} bg-cs/20 hover:bg-cs/30 active:bg-cs/40 focus-visible:border-cs`,
+  btnSecondaryStyle: `${base.btnSecondary} hover:bg-cs/10 active:bg-cs/20 focus-visible:border-cs`,
   checkboxStyle: `${base.checkbox} checked:bg-cs`,
   textInputStyle: `${base.textInput} focus-visible:border-cs`,
   highlightColor: 'bg-cs/30',
@@ -23,7 +25,8 @@ const cs = {
 const home = {
   bgColor: 'bg-default',
   textColor: 'text-default',
-  btnStyle: `${base.btn} bg-default/20 hover:bg-default/30 active:bg-default/40 focus-visible:border-default`,
+  btnPrimaryStyle: `${base.btnPrimary} bg-default/20 hover:bg-default/30 active:bg-default/40 focus-visible:border-default`,
+  btnSecondaryStyle: `${base.btnSecondary} hover:bg-default/10 active:bg-default/20 focus-visible:border-default`,
   checkboxStyle: `${base.checkbox} checked:bg-default`,
   textInputStyle: `${base.textInput} focus-visible:border-default`,
   highlightColor: 'bg-default/30',

@@ -15,7 +15,7 @@ const Contribute = () => {
   const [category, setCategory] = useState([]);
   const [source, setSource] = useState('');
   const [loading, setLoading] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(true);
   const time = DateTime.now().toString();
   const { major } = useParams();
   let navigate = useNavigate();
@@ -24,7 +24,7 @@ const Contribute = () => {
   const [showSourceError, setShowSourceError] = useState(false);
 
   const {
-    btnStyle, checkboxStyle, textInputStyle, textColor,
+    btnPrimaryStyle, btnSecondaryStyle, checkboxStyle, textInputStyle, textColor,
   } = styleScheme[major];
 
   const handleSubmit = (e) => {
@@ -86,7 +86,7 @@ const Contribute = () => {
                   setShowSuccess(false);
                   navigate('./../prospective');
                 }}
-                className={`${btnStyle} flex-grow`}
+                className={`${btnPrimaryStyle} flex-grow`}
               >
                 Back to FAQ
               </button>
@@ -94,7 +94,7 @@ const Contribute = () => {
                 type="button"
                 aria-label="Contribute more"
                 onClick={() => setShowSuccess(false)}
-                className={`${btnStyle} bg-white hover:bg-black/10 active:bg-black/20 border flex-grow`}
+                className={`${btnSecondaryStyle} flex-grow`}
               >
                 Contribute more
               </button>
@@ -153,7 +153,7 @@ const Contribute = () => {
               {showSourceError && <p className="text-red text-sm mt-1"> Invalid link. </p>}
             </div>
             <button
-              className={btnStyle}
+              className={btnPrimaryStyle}
               disabled={loading}
               type="submit"
             >
