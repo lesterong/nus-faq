@@ -1,11 +1,12 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
+import AboutModal from './AboutModal';
 import Logo from '../assets/Logo';
 import Search from '../assets/Search';
 import Close from '../assets/Close';
 import Info from '../assets/Info';
 import categories from '../utils/categories';
-import AboutModal from './AboutModal';
+import majors from '../utils/majors';
 import styleScheme from '../utils/styleScheme';
 
 const Navbar = ({ handleQuery = {} }) => {
@@ -38,8 +39,8 @@ const Navbar = ({ handleQuery = {} }) => {
           <Logo />
           <h1>
             <b> NUS </b>
-            {major && major.toUpperCase()}
-            {major && <span>&nbsp;</span>}
+            {majors.includes(major) && major.toUpperCase()}
+            {majors.includes(major) && <span>&nbsp;</span>}
             FAQ
           </h1>
         </button>

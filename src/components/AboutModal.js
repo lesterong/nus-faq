@@ -1,5 +1,6 @@
 import Modal from 'react-modal';
 import { Link, useParams } from 'react-router-dom';
+import majors from '../utils/majors';
 import styleScheme from '../utils/styleScheme';
 
 const AboutModal = ({ isOpen, onRequestClose }) => {
@@ -33,7 +34,7 @@ const AboutModal = ({ isOpen, onRequestClose }) => {
         .
       </p>
       <p className="mt-1">
-        {major ? (
+        {majors.includes(major) ? (
           <>
             If you would like to contribute to the&nbsp;
             {major.toUpperCase()}
@@ -44,7 +45,7 @@ const AboutModal = ({ isOpen, onRequestClose }) => {
         ) : (
           <>
             You can now submit your questions and answers for all majors in NUS&nbsp;
-            <Link className={textColor} onClick={onRequestClose} to="../contribute">here</Link>
+            <Link className={textColor} onClick={onRequestClose} to="/contribute">here</Link>
             !
           </>
         )}
