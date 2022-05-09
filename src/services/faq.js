@@ -1,4 +1,4 @@
-const baseUrl = 'https://cs-faq-a150f-default-rtdb.asia-southeast1.firebasedatabase.app/';
+const baseUrl = 'https://nus-faq-bdc5d-default-rtdb.asia-southeast1.firebasedatabase.app/';
 
 // eslint-disable-next-line no-unused-vars
 const getAll = (major) => {
@@ -9,11 +9,11 @@ const getAll = (major) => {
       'Content-Type': 'application/json',
     },
   };
-  const request = fetch('../main.json', init);
+  const request = fetch(`${baseUrl}/main/${major}.json`, init);
   return request.then((response) => response.json());
 };
 
-const create = (faq, major) => {
+const create = (faq, faculty) => {
   const init = {
     method: 'POST',
     mode: 'cors',
@@ -22,7 +22,7 @@ const create = (faq, major) => {
     },
     body: JSON.stringify(faq),
   };
-  const request = fetch(`${baseUrl}contribute/${major}.json`, init);
+  const request = fetch(`${baseUrl}contribute/${faculty}.json`, init);
   return request.then((response) => response.json());
 };
 

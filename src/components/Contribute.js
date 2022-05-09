@@ -8,6 +8,7 @@ import Spinner from '../assets/Spinner';
 import Editor from './Editor';
 import styleScheme from '../utils/styleScheme';
 import categories from '../utils/categories';
+import majorsToFaculty from '../utils/majorsToFaculty';
 
 const Contribute = () => {
   const [question, setQuestion] = useState('');
@@ -38,6 +39,7 @@ const Contribute = () => {
       : `https://${source}`;
 
     const newFaq = {
+      major,
       question,
       answer,
       category,
@@ -46,7 +48,7 @@ const Contribute = () => {
       id: uuidv4(),
     };
     setLoading(true);
-    faqService.create(newFaq, major)
+    faqService.create(newFaq, majorsToFaculty[major])
       .then(() => {
         setLoading(false);
         setShowError(false);
@@ -86,7 +88,7 @@ const Contribute = () => {
                   setShowSuccess(false);
                   navigate('./../prospective');
                 }}
-                className={`${btnPrimaryStyle} flex-grow`}
+                className={`${btnPrimaryStyle} flex-1`}
               >
                 Back to FAQ
               </button>
@@ -94,7 +96,7 @@ const Contribute = () => {
                 type="button"
                 aria-label="Contribute more"
                 onClick={() => setShowSuccess(false)}
-                className={`${btnSecondaryStyle} flex-grow`}
+                className={`${btnSecondaryStyle} flex-1`}
               >
                 Contribute more
               </button>
