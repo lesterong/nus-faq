@@ -1,6 +1,5 @@
 const baseUrl = 'https://nus-faq-bdc5d-default-rtdb.asia-southeast1.firebasedatabase.app/';
 
-// eslint-disable-next-line no-unused-vars
 const getAll = (major) => {
   const init = {
     method: 'GET',
@@ -9,7 +8,8 @@ const getAll = (major) => {
       'Content-Type': 'application/json',
     },
   };
-  const request = fetch(`${baseUrl}/main/${major}.json`, init);
+  // const request = fetch(`${baseUrl}/main/${major}.json`, init);
+  const request = fetch(`../main/${major}.json`, init);
   return request.then((response) => response.json());
 };
 
