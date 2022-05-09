@@ -4,6 +4,7 @@ import Item from './Item';
 import faqService from '../services/faq';
 import Spinner from '../assets/Spinner';
 import categories from '../utils/categories';
+import majors from '../utils/majors';
 
 const Accordion = ({ currQuery }) => {
   let params = useParams();
@@ -13,12 +14,12 @@ const Accordion = ({ currQuery }) => {
   const [loading, setLoading] = useState(true);
   const [faqs, setFaqs] = useState([]);
   const getFaq = () => {
-    faqService.getAll(major).then((initial) => {
-      if (initial[`${major}`]) {
-        setFaqs(initial[`${major}`]);
-      }
-      setLoading(false);
-    });
+    if (majors.includes(major)) {
+      faqService.getAll(major).then((initial) => {
+        setFaqs(initial);
+        setLoading(false);
+      });
+    }
   };
   useEffect(getFaq, [major]);
 
