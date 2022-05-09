@@ -2,8 +2,8 @@ import { useParams } from 'react-router-dom';
 import styleScheme from '../utils/styleScheme';
 
 const Spinner = ({ size = 'h-16' }) => {
-  let { major = 'home' } = useParams();
-  const { svgColor } = styleScheme[major];
+  let { major } = useParams();
+  const { svgColor } = styleScheme[major] || styleScheme.home;
 
   return (
     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className={`animate-spin ${svgColor} ${size} mx-auto`}>

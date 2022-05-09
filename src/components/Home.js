@@ -1,39 +1,11 @@
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import Logo from '../assets/Logo';
-import Info from '../assets/Info';
-import AboutModal from './AboutModal';
+import { useNavigate, Link } from 'react-router-dom';
+import Navbar from './Navbar';
 
 const Home = ({ notFound = false }) => {
-  const [showAbout, setShowAbout] = useState(false);
-
   let navigate = useNavigate();
   return (
     <>
-      <AboutModal isOpen={showAbout} onRequestClose={() => setShowAbout(false)} />
-      <nav>
-        <button
-          onClick={() => navigate('/')}
-          className="focus-white flex space-x-2"
-          aria-label="Logo"
-          type="button"
-        >
-          <Logo />
-          <h1>
-            <b> NUS </b>
-            FAQ
-          </h1>
-        </button>
-        <button
-          type="button"
-          className="focus-white"
-          aria-label="About this site"
-          onClick={() => setShowAbout(true)}
-        >
-          <Info />
-        </button>
-      </nav>
-
+      <Navbar />
       <div className="flex flex-col">
         {notFound && (
         <div className="max-w-md mx-auto">
@@ -41,9 +13,8 @@ const Home = ({ notFound = false }) => {
             The FAQ for this major is not available.
           </h1>
           <p className="md:px-0 px-3 font-normal">
-            Select one of the majors below to explore, or make a request using
-            the feedback form&nbsp;
-            <a href="https://forms.gle/ivY3YVdxd3x2Zdqq6" rel="noopener nofollow noreferrer" target="_blank">here</a>
+            Select one of the majors below to explore, or make a major request on the&nbsp;
+            <Link to="/contribute">contribution page</Link>
             .
           </p>
         </div>

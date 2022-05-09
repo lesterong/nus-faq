@@ -2,8 +2,8 @@ import { useParams } from 'react-router-dom';
 import styleScheme from '../utils/styleScheme';
 
 const Highlight = ({ query, text }) => {
-  let { major = 'home' } = useParams();
-  const { highlightColor } = styleScheme[major];
+  let { major } = useParams();
+  const { highlightColor } = styleScheme[major] || styleScheme.home;
 
   const queryLength = query.length;
   const textLength = text.length;

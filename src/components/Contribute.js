@@ -24,7 +24,7 @@ const Contribute = () => {
   const [showSourceError, setShowSourceError] = useState(false);
 
   const {
-    btnStyle, checkboxStyle, textInputStyle, textColor,
+    btnPrimaryStyle, btnSecondaryStyle, checkboxStyle, textInputStyle, textColor,
   } = styleScheme[major];
 
   const handleSubmit = (e) => {
@@ -69,13 +69,6 @@ const Contribute = () => {
       : setCategory(category.filter((val) => val !== e.target.value))
   );
 
-  switch (major) {
-    case 'cs':
-      break;
-    default:
-      break;
-  }
-
   return (
     <div className="p-4 flex justify-items-center mx-auto max-w-lg">
       <form
@@ -93,7 +86,7 @@ const Contribute = () => {
                   setShowSuccess(false);
                   navigate('./../prospective');
                 }}
-                className={`${btnStyle} flex-grow`}
+                className={`${btnPrimaryStyle} flex-grow`}
               >
                 Back to FAQ
               </button>
@@ -101,7 +94,7 @@ const Contribute = () => {
                 type="button"
                 aria-label="Contribute more"
                 onClick={() => setShowSuccess(false)}
-                className={`${btnStyle} bg-white hover:bg-black/10 active:bg-black/20 border flex-grow`}
+                className={`${btnSecondaryStyle} flex-grow`}
               >
                 Contribute more
               </button>
@@ -160,7 +153,7 @@ const Contribute = () => {
               {showSourceError && <p className="text-red text-sm mt-1"> Invalid link. </p>}
             </div>
             <button
-              className={btnStyle}
+              className={btnPrimaryStyle}
               disabled={loading}
               type="submit"
             >

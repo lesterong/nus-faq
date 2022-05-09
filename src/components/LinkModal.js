@@ -8,8 +8,8 @@ const LinkModal = ({ saveLink, handleUrl }) => {
   Modal.setAppElement('#root');
   const add = useState(!handleUrl.url);
   const [error, setError] = useState(false);
-  let { major = 'home' } = useParams();
-  const { textInputStyle, btnStyle } = styleScheme[major];
+  let { major } = useParams();
+  const { textInputStyle, btnPrimaryStyle } = styleScheme[major] || styleScheme.home;
 
   const handleSave = isURL(handleUrl.url, { protocols: ['https'] }) || !handleUrl.url
     ? () => { setError(false); saveLink(); }
@@ -54,7 +54,7 @@ const LinkModal = ({ saveLink, handleUrl }) => {
         )}
         <button
           onClick={handleSave}
-          className={`${btnStyle} w-full mt-3`}
+          className={`${btnPrimaryStyle} w-full mt-3`}
           type="button"
         >
           Save

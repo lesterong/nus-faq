@@ -1,18 +1,19 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
+import AboutModal from './AboutModal';
 import Logo from '../assets/Logo';
 import Search from '../assets/Search';
 import Close from '../assets/Close';
 import Info from '../assets/Info';
 import categories from '../utils/categories';
-import AboutModal from './AboutModal';
+import majors from '../utils/majors';
 import styleScheme from '../utils/styleScheme';
 
-const Navbar = ({ handleQuery }) => {
+const Navbar = ({ handleQuery = {} }) => {
   let navigate = useNavigate();
   const { currQuery, setQuery } = handleQuery;
   let { major, currCat = '' } = useParams();
-  const { bgColor } = styleScheme[major];
+  const { bgColor = 'bg-black' } = styleScheme[major] || {};
   const isValidCat = categories.includes(currCat);
   const displayCat = currCat.charAt(0).toUpperCase() + currCat.slice(1);
 
@@ -38,8 +39,9 @@ const Navbar = ({ handleQuery }) => {
           <Logo />
           <h1>
             <b> NUS </b>
-            {major.toUpperCase()}
-            &nbsp;FAQ
+            {majors.includes(major) && major.toUpperCase()}
+            {majors.includes(major) && <span>&nbsp;</span>}
+            FAQ
           </h1>
         </button>
 
@@ -58,7 +60,7 @@ const Navbar = ({ handleQuery }) => {
               <button
                 type="button"
                 className="focus-white"
-                aria-label="Close search"
+                aria-label={currQuery ? 'Clear Search' : 'Close Search'}
                 onClick={handleClose}
               >
                 <Close />
