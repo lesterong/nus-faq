@@ -15,12 +15,18 @@ const Accordion = ({ currQuery }) => {
   const [faqs, setFaqs] = useState([]);
   const getFaq = () => {
     if (majors.includes(major)) {
-      faqService.getAll(major).then((initial) => {
-        setFaqs(initial);
-        setLoading(false);
-      });
+      faqService.getAll(major)
+        .then((res) => {
+          let dataArray = [];
+          res.forEach((childRes) => {
+            dataArray[dataArray.length] = childRes.val();
+          });
+          setFaqs(dataArray);
+          setLoading(false);
+        });
     }
   };
+
   useEffect(getFaq, [major]);
 
   const faqsToShow = !currQuery

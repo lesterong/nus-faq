@@ -7,9 +7,6 @@ The site is deployed [here](https://nusfaq.netlify.app).
 ### Supported Majors
 Currently, only NUS Computer Science is supported. You can contribute to the other majors by submitting your questions and answers [here](https://nusfaq.netlify.app/contribute).
 
-### Known issues
-This app is not fully configured to work with Firebase. Currently, the data is fetched from a local database within the repository.
-
 ### To add a new major
 1. Enable the category by adding it to the `src/utils/majors.js` and `src/utils/majorsToFaculty.js`.
 ```js

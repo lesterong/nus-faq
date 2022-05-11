@@ -48,7 +48,8 @@ const Contribute = () => {
       id: uuidv4(),
     };
     setLoading(true);
-    faqService.create(newFaq, majorsToFaculty[major])
+    faqService
+      .create(majorsToFaculty[major], newFaq)
       .then(() => {
         setLoading(false);
         setShowError(false);
@@ -122,7 +123,7 @@ const Contribute = () => {
                 required
               />
             </div>
-            <Editor updateAns={(str) => setAnswer(str)} />
+            <Editor answer={answer} updateAns={(str) => setAnswer(str)} />
             <fieldset className="flex flex-col md:space-y-0 space-y-2">
               <legend>Category</legend>
               {categories.map((cat) => (

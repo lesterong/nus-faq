@@ -1,31 +1,37 @@
-const baseUrl = 'https://nus-faq-bdc5d-default-rtdb.asia-southeast1.firebasedatabase.app/';
+import { initializeApp } from 'firebase/app';
+import {
+  getDatabase, ref, get, set, push, orderByChild, query,
+} from 'firebase/database';
 
-const getAll = (major) => {
-  const init = {
-    method: 'GET',
-    mode: 'cors',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  };
-  // const request = fetch(`${baseUrl}/main/${major}.json`, init);
-  const request = fetch(`../main/${major}.json`, init);
-  return request.then((response) => response.json());
+const firebaseConfig = {
+  apiKey: 'AIzaSyA3VP-yBrEsOOYOKlhXrsp7KciNJqBVxXw',
+  authDomain: 'nus-faq-bdc5d.firebaseapp.com',
+  databaseURL: 'https://nus-faq-bdc5d-default-rtdb.asia-southeast1.firebasedatabase.app',
+  projectId: 'nus-faq-bdc5d',
+  storageBucket: 'nus-faq-bdc5d.appspot.com',
+  messagingSenderId: '971887297854',
+  appId: '1:971887297854:web:a5e1dc333139d59083186f',
 };
 
-const create = (faq, faculty) => {
-  const init = {
-    method: 'POST',
-    mode: 'cors',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(faq),
-  };
-  const request = fetch(`${baseUrl}contribute/${faculty}.json`, init);
-  return request.then((response) => response.json());
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+const getAll = (major) => (
+  get(query(ref(db, `main/${major}`), orderByChild('question')))
+);
+
+const createMain = (major, data) => {
+  const faqListRef = ref(db, `main/${major}`);
+  const newFaqRef = push(faqListRef);
+  return set(newFaqRef, data);
 };
 
-const faqObject = { getAll, create };
+const create = (faculty, data) => {
+  const faqListRef = ref(db, `contribute/${faculty}`);
+  const newFaqRef = push(faqListRef);
+  return set(newFaqRef, data);
+};
+
+const faqObject = { getAll, createMain, create };
 
 export default faqObject;

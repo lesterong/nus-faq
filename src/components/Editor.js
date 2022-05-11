@@ -101,7 +101,7 @@ const MenuBar = ({ editor, handleUrl }) => {
   );
 };
 
-const Editor = ({ updateAns }) => {
+const Editor = ({ answer, updateAns }) => {
   const [url, setUrl] = useState('');
   const [showModal, setShowModal] = useState(false);
   let { major } = useParams();
@@ -136,7 +136,7 @@ const Editor = ({ updateAns }) => {
         orderedList: false,
       }),
     ],
-    content: '',
+    content: `${answer}`,
     // eslint-disable-next-line no-shadow
     onUpdate: ({ editor }) => {
       const html = editor.getHTML();
