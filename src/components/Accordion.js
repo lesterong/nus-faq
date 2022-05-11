@@ -15,15 +15,20 @@ const Accordion = ({ currQuery }) => {
   const [faqs, setFaqs] = useState([]);
   const getFaq = () => {
     if (majors.includes(major)) {
-      faqService.getAll(major)
-        .then((res) => {
-          let dataArray = [];
-          res.forEach((childRes) => {
-            dataArray[dataArray.length] = childRes.val();
+      if (sessionStorage.getItem(`${major}`) === null) {
+        faqService.getAll(major)
+          .then((res) => {
+            let dataArray = [];
+            res.forEach((childRes) => {
+              dataArray[dataArray.length] = childRes.val();
+            });
+            sessionStorage.setItem(`${major}`, JSON.stringify(dataArray));
+            setFaqs(dataArray);
           });
-          setFaqs(dataArray);
-          setLoading(false);
-        });
+      } else {
+        setFaqs(JSON.parse(sessionStorage.getItem(`${major}`)));
+      }
+      setLoading(false);
     }
   };
 
