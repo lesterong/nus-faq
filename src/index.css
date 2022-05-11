@@ -163,3 +163,7 @@
 .tippy-content {
   @apply relative py-1 px-2 z-10;
 }
+
+.ProseMirror {
+  @apply break-words sm:w-[432px] max-w-[calc(100vw-80px)];
+}

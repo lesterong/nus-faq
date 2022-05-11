@@ -1,11 +1,14 @@
 # NUS FAQ
 
-NUS FAQ was built to serve as a central location to answer the most asked questions about different majors in NUS. I built this upon seeing the same questions appear on reddit on r/NUS and r/SGExams again, and again. 
+NUS FAQ was built to serve as a central location to answer the most asked questions about different majors in NUS. I built this upon seeing the same questions appear on reddit on [r/NUS](https://www.reddit.com/r/nus) and [r/SGExams](https://www.reddit.com/r/SGExams) again, and again. 
 
 The site is deployed [here](https://nusfaq.netlify.app).
 
 ### Supported Majors
 Currently, only NUS Computer Science is supported. You can contribute to the other majors by submitting your questions and answers [here](https://nusfaq.netlify.app/contribute).
+
+### Known issues
+This app is not fully configured to work with Firebase. Currently, the data is fetched from a local database within the repository.
 
 ### To add a new major
 1. Enable the category by adding it to the `src/utils/majors.js` and `src/utils/majorsToFaculty.js`.
@@ -33,7 +36,7 @@ module.exports = {
       red: '#B91C1C',
       default: '#DB2777',
       cs: '#4357AD',
-      newMajor: 'color'
+      newMajor: 'color',
     },
   },
   ...
@@ -43,8 +46,8 @@ module.exports = {
 3. Add a new CSS rule in `src/index.css` to apply the new colors to links. 
 ```css
 /* index.css */
-.major-content a { 
-  @apply text-major;
+.newMajor-content a { 
+  @apply text-newMajor;
 }
 ```
 4. Add rules in `src/utils/styleScheme.js` to apply the styles across the application.
@@ -53,7 +56,8 @@ module.exports = {
 ...
 const newMajor = {
   bgColor: 'bg-newMajor',
+  ...
 };
 
-const styleScheme = { ... newMajor }
+const styleScheme = { ..., newMajor }
 ```
